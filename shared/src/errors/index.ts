@@ -7,6 +7,8 @@ export * from "./consultation.errors";
 export * from "./cooperation.errors";
 export * from "./analytics.errors";
 export * from "./common.errors";
+export * from "./category.errors";
+export * from "./password.errors";
 
 import type { AuthErrorCode } from "./auth.errors";
 import type { ProductErrorCode } from "./product.errors";
@@ -17,6 +19,8 @@ import type { ConsultationErrorCode } from "./consultation.errors";
 import type { CooperationErrorCode } from "./cooperation.errors";
 import type { AnalyticsErrorCode } from "./analytics.errors";
 import type { CommonErrorCode } from "./common.errors";
+import type { CategoryErrorCode } from "./category.errors";
+import type { PasswordErrorCode } from "./password.errors";
 
 export type ErrorCode =
     | AuthErrorCode
@@ -27,4 +31,6 @@ export type ErrorCode =
     | ConsultationErrorCode
     | CooperationErrorCode
     | AnalyticsErrorCode
-    | CommonErrorCode;
+    | CommonErrorCode
+    | CategoryErrorCode
+    | PasswordErrorCode;
