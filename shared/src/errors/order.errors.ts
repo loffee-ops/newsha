@@ -1,0 +1,8 @@
+export const ORDER_ERROR_CODES = {
+    ORDER_NOT_FOUND: "ORDER_NOT_FOUND",
+    INVALID_ORDER_ID: "INVALID_ORDER_ID",
+    INVALID_ORDER_STATUS: "INVALID_ORDER_STATUS",
+    CART_EMPTY: "CART_EMPTY",
+} as const;
+
+export type OrderErrorCode = (typeof ORDER_ERROR_CODES)[keyof typeof ORDER_ERROR_CODES];

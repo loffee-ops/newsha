@@ -1,0 +1,9 @@
+export const COMMON_ERROR_CODES = {
+    BAD_REQUEST: "BAD_REQUEST",
+    VALIDATION_FAILED: "VALIDATION_FAILED",
+    NOT_FOUND: "NOT_FOUND",
+    FORBIDDEN: "FORBIDDEN",
+    INTERNAL_ERROR: "INTERNAL_ERROR",
+} as const;
+
+export type CommonErrorCode = (typeof COMMON_ERROR_CODES)[keyof typeof COMMON_ERROR_CODES];
