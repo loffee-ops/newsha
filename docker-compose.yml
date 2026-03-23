@@ -1,0 +1,41 @@
+services:
+    redis:
+        image: redis:7
+        container_name: newsha-redis
+        ports:
+            - "6379:6379"
+        volumes:
+            - redis_data:/data
+        restart: unless-stopped
+
+    backend:
+        build:
+            context: .
+            dockerfile: backend/Dockerfile
+        container_name: newsha-backend
+        env_file:
+            - .env.docker
+        ports:
+            - "7184:7183"
+        environment:
+            NODE_ENV: production
+            PORT: 7183
+            MONGO_URI: ${MONGO_URI}
+            REDIS_HOST: redis
+            REDIS_PORT: 6379
+            JWT_SECRET: ${JWT_SECRET}
+            ACCESS_TOKEN_EXPIRES_IN: 15m
+            REFRESH_TOKEN_EXPIRES_IN: 30d
+            CLIENT_URL: ${CLIENT_URL:-http://localhost:5173}
+            API_BASE_PATH: /api
+            CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:5173,http://localhost:3000}
+            CLOUDINARY_CLOUD_NAME: ${CLOUDINARY_CLOUD_NAME:-}
+            CLOUDINARY_API_KEY: ${CLOUDINARY_API_KEY:-}
+            CLOUDINARY_API_SECRET: ${CLOUDINARY_API_SECRET:-}
+            GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+        depends_on:
+            - redis
+        restart: unless-stopped
+
+volumes:
+    redis_data:
