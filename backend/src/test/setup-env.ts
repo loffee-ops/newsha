@@ -1,0 +1,12 @@
+process.env.NODE_ENV = "test";
+process.env.PORT = process.env.PORT ?? "7183";
+process.env.MONGO_URI = process.env.MONGO_URI ?? "mongodb://127.0.0.1:27017/newsha_test";
+process.env.JWT_SECRET = process.env.JWT_SECRET ?? "test-secret-123";
+process.env.CLOUDINARY_CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME ?? "test";
+process.env.CLOUDINARY_API_KEY = process.env.CLOUDINARY_API_KEY ?? "test";
+process.env.CLOUDINARY_API_SECRET = process.env.CLOUDINARY_API_SECRET ?? "test";
+process.env.GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID ?? "test";
+process.env.CLIENT_URL = process.env.CLIENT_URL ?? "http://localhost:5173";
+process.env.API_BASE_PATH = process.env.API_BASE_PATH ?? "/api";
+process.env.REDIS_HOST = process.env.REDIS_HOST ?? "127.0.0.1";
+process.env.REDIS_PORT = process.env.REDIS_PORT ?? "6379";

@@ -17,6 +17,6 @@
         "resolveJsonModule": true,
         "types": ["node", "vitest/globals"]
     },
-    "include": ["src"],
+    "include": ["src", "../shared/src/contracts/common/zod-extend.ts"],
     "references": [{ "path": "../shared" }]
 }
