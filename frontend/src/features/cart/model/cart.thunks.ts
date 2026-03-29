@@ -5,52 +5,70 @@ import type { AddToCartDTO, RemoveFromCartDTO } from "@shared/contracts/cart";
 
 import type { AppServices } from "@/app/services/app-service";
 
+function getErrorMessage(error: unknown, fallback: string): string {
+    if (error instanceof Error && error.message.trim()) {
+        return error.message;
+    }
+
+    if (typeof error === "string" && error.trim()) {
+        return error;
+    }
+
+    return fallback;
+}
+
+function toMutableCartRows(rows: readonly CartRow[]): CartRow[] {
+    return rows.map((row) => ({ ...row }));
+}
+
 export const fetchCart = createAsyncThunk<
-    readonly CartRow[],
+    CartRow[],
     void,
     { extra: AppServices; rejectValue: string }
 >("cart/fetchCart", async (_, { extra, rejectWithValue }) => {
     try {
-        return await extra.cart.fetchCart();
+        const rows = await extra.cart.getCart();
+        return toMutableCartRows(rows);
     } catch (error) {
-        return rejectWithValue(error instanceof Error ? error.message : "Failed to load cart");
+        return rejectWithValue(getErrorMessage(error, "Failed to load cart"));
     }
 });
 
 export const addToCart = createAsyncThunk<
-    readonly CartRow[],
+    CartRow[],
     AddToCartDTO,
     { extra: AppServices; rejectValue: string }
 >("cart/addToCart", async (payload, { extra, rejectWithValue }) => {
     try {
-        return await extra.cart.addToCart(payload);
+        const rows = await extra.cart.addToCart(payload);
+        return toMutableCartRows(rows);
     } catch (error) {
-        return rejectWithValue(error instanceof Error ? error.message : "Failed to add to cart");
+        return rejectWithValue(getErrorMessage(error, "Failed to add to cart"));
     }
 });
 
 export const removeFromCart = createAsyncThunk<
-    readonly CartRow[],
+    CartRow[],
     RemoveFromCartDTO,
     { extra: AppServices; rejectValue: string }
 >("cart/removeFromCart", async (payload, { extra, rejectWithValue }) => {
     try {
-        return await extra.cart.removeFromCart(payload);
+        const rows = await extra.cart.removeFromCart(payload);
+        return toMutableCartRows(rows);
     } catch (error) {
-        return rejectWithValue(
-            error instanceof Error ? error.message : "Failed to remove from cart",
-        );
+        return rejectWithValue(getErrorMessage(error, "Failed to remove from cart"));
     }
 });
 
 export const clearCart = createAsyncThunk<
-    readonly CartRow[],
+    CartRow[],
     void,
     { extra: AppServices; rejectValue: string }
 >("cart/clearCart", async (_, { extra, rejectWithValue }) => {
     try {
-        return await extra.cart.clearCart();
+        const rows = await extra.cart.clearCart();
+        return toMutableCartRows(rows);
     } catch (error) {
-        return rejectWithValue(error instanceof Error ? error.message : "Failed to clear cart");
+        return rejectWithValue(getErrorMessage(error, "Failed to clear cart"));
     }
 });

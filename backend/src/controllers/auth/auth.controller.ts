@@ -84,16 +84,6 @@ export async function refreshHandler(req: Request, res: Response) {
     res.json({ user: result.user });
 }
 
-export async function meHandler(req: Request, res: Response) {
-    if (!req.userId) {
-        throw AuthErrors.unauthorized();
-    }
-
-    const user = await userService.getUserById(req.userId);
-
-    res.json({ user });
-}
-
 export async function logoutHandler(req: Request, res: Response) {
     if (req.sessionId) {
         await logoutCurrentSession(req.sessionId);

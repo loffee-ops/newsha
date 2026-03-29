@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { InferSchemaType } from "mongoose";
 
 const WishlistItemSchema = new mongoose.Schema(
     {
@@ -24,9 +24,8 @@ export type WishlistDBItem = {
     addedAt: Date;
 };
 
-export type WishlistDB = {
+export type WishlistDB = InferSchemaType<typeof WishlistSchema> & {
     _id: mongoose.Types.ObjectId;
-    userId: string;
     items: WishlistDBItem[];
     createdAt: Date;
     updatedAt: Date;

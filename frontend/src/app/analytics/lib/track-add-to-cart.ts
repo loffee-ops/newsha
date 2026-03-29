@@ -1,9 +1,10 @@
-import type { AnalyticsSDK } from "@/app/analytics/types";
-import type { AddToCartParams } from "@shared/domain/analytics";
+import type { AnalyticsSDK } from "@/entities/analytics/types";
 
-export function trackAddToCart(analytics: AnalyticsSDK, params: AddToCartParams) {
+import { ANALYTICS_EVENTS, type AddToCartParams } from "@shared/domain/analytics";
+
+export function trackAddToCart(analytics: AnalyticsSDK, params: AddToCartParams): void {
     analytics.track({
-        type: "add_to_cart",
+        type: ANALYTICS_EVENTS.ADD_TO_CART,
         ...params,
     });
 }

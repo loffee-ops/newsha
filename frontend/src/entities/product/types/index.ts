@@ -10,3 +10,10 @@ export type { ProductCardViewProps, ProductCardContainerProps } from "./product-
 export type { SearchVariationResult } from "./product-search.types";
 export type { VolumeSelectorListProps } from "./product-volume.types";
 export type { ProductFilters } from "./product-filters.types";
+export type {
+    AdminProductsQuery,
+    AdminPaginatedProductsDTO,
+    UpdateAdminProductPayload,
+    SetAdminProductActivePayload,
+    SetAdminProductFlagsPayload,
+} from "./admin-product.api.types";

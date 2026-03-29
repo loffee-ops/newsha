@@ -1,9 +1,9 @@
 import type { Request, Response } from "express";
 import mongoose from "mongoose";
 
-import { redis } from "@/infrastructure/redis";
+import type { DbStatus, HealthResponse, RedisStatus } from "@shared/contracts/health";
 
-import type { HealthResponse, DbStatus, RedisStatus } from "@shared/contracts/health";
+import { redis } from "@/infrastructure/redis";
 
 function getDbStatus(): DbStatus {
     switch (mongoose.connection.readyState) {
@@ -19,31 +19,28 @@ function getDbStatus(): DbStatus {
 }
 
 function getRedisStatus(): RedisStatus {
-    const status = redis.status;
-
-    if (status === "ready") {
-        return "up";
+    switch (redis.status) {
+        case "ready":
+            return "up";
+        case "connect":
+        case "connecting":
+        case "reconnecting":
+            return "connecting";
+        default:
+            return "down";
     }
-
-    if (status === "connect" || status === "connecting" || status === "reconnecting") {
-        return "connecting";
-    }
-
-    return "down";
 }
 
-export async function health(_req: Request, res: Response<HealthResponse>) {
+export async function health(_req: Request, res: Response<HealthResponse>): Promise<void> {
     const db = getDbStatus();
-    const redisStatus = getRedisStatus();
+    const redis = getRedisStatus();
 
-    const isOk =
-        (db === "up" || db === "connecting") &&
-        (redisStatus === "up" || redisStatus === "connecting");
+    const isOk = (db === "up" || db === "connecting") && (redis === "up" || redis === "connecting");
 
     const payload: HealthResponse = {
         status: isOk ? "ok" : "error",
         db,
-        redis: redisStatus,
+        redis,
         uptime: Math.round(process.uptime()),
         timestamp: new Date().toISOString(),
     };

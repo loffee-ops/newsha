@@ -17,7 +17,7 @@ describe("POST /api/analytics", () => {
             path: "/",
         });
 
-        expect(response.status).toBe(200);
+        expect(response.status).toBe(201);
         expect(response.body).toEqual({ ok: true });
         expect(trackSpy).toHaveBeenCalledWith(
             {

@@ -16,6 +16,11 @@ export class HttpAuthRepository implements AuthRepository {
         return toAuthSession(response);
     }
 
+    async loginWithGoogle(idToken: string): Promise<AuthSession> {
+        const response = await authApi.loginWithGoogle(idToken);
+        return toAuthSession(response);
+    }
+
     async register(dto: RegisterDTO): Promise<AuthSession> {
         const response = await authApi.register(dto);
         return toAuthSession(response);

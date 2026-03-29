@@ -1,6 +1,5 @@
 export { authReducer, setAuth, clearAuth } from "./auth.slice";
-
-export { openLoginModal, openRegisterModal, closeAuthModal, authUIReducer } from "./auth-ui.slice";
+export { authUIReducer, openLoginModal, openRegisterModal, closeAuthModal } from "./auth-ui.slice";
 
 export {
     selectAuthState,
@@ -17,4 +16,7 @@ export {
     selectIsGuestUser,
 } from "./auth.selectors";
 
-export { login, register, restoreSession, logout } from "./auth.thunks";
+export { restoreSession, login, loginWithGoogle, register, logout } from "./auth.thunks";
+
+export type { AuthState } from "./auth.slice";
+export type { AuthModalMode } from "./auth-ui.slice";

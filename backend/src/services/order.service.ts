@@ -9,7 +9,7 @@ import { buildPaginationMeta } from "@shared/lib/pagination/build-pagination-met
 import { OrderErrors, ProductErrors } from "@/errors";
 import { paginate } from "@/lib/db";
 import { toOrder, toOrders } from "@/mappers/order";
-import { CartModel, type CartDB } from "@/models/cart.model";
+import { CartModel, type CartDoc } from "@/models/cart.model";
 import { OrderModel, type OrderDB } from "@/models/order.model";
 import { ProductModel, type ProductDoc } from "@/models/product.model";
 
@@ -19,7 +19,7 @@ type AdminOrderFilters = {
 
 export class OrderService {
     async createFromCheckout(userId: ID, dto: CheckoutDTO): Promise<Order> {
-        const cart = await CartModel.findOne({ userId: String(userId) }).lean<CartDB | null>();
+        const cart = await CartModel.findOne({ userId: String(userId) }).lean<CartDoc | null>();
 
         if (!cart || cart.items.length === 0) {
             throw ProductErrors.cartEmpty();
@@ -46,7 +46,7 @@ export class OrderService {
         for (const cartItem of cart.items) {
             const product = productMap.get(String(cartItem.productId));
 
-            if (!product) {
+            if (!product || !product.isActive) {
                 throw ProductErrors.notFound();
             }
 
@@ -96,12 +96,20 @@ export class OrderService {
             comment: dto.comment,
         });
 
-        await CartModel.updateOne({ userId: String(userId) }, { $set: { items: [] } });
+        await CartModel.updateOne(
+            { userId: String(userId) },
+            {
+                $set: {
+                    userId: String(userId),
+                    items: [],
+                },
+            },
+        );
 
         return toOrder(orderDoc.toObject());
     }
 
-    async getUserOrders(userId: ID): Promise<Order[]> {
+    async getUserOrders(userId: ID): Promise<readonly Order[]> {
         const docs = await OrderModel.find({ userId: String(userId) })
             .sort({ createdAt: -1 })
             .lean<OrderDB[]>();

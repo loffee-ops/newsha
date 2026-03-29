@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 
-import { analyticsApi } from "@/app/analytics/api";
+import { analytics } from "@/entities/analytics/api";
 
 import { PAGE_LIFECYCLE_MIN_DURATION } from "@/app/analytics/config";
 
@@ -18,8 +18,8 @@ export function PageLifecycleTracker() {
             const duration = Math.round((Date.now() - enterTs.current) / 1000);
 
             if (duration >= PAGE_LIFECYCLE_MIN_DURATION) {
-                analyticsApi.pageLeave(lastPath.current, duration);
-                analyticsApi.timeOnPage(lastPath.current, duration);
+                analytics.pageLeave(lastPath.current, duration);
+                analytics.timeOnPage(lastPath.current, duration);
             }
         }
 
@@ -33,8 +33,8 @@ export function PageLifecycleTracker() {
 
             const duration = Math.round((Date.now() - enterTs.current) / 1000);
             if (duration >= PAGE_LIFECYCLE_MIN_DURATION) {
-                analyticsApi.pageLeave(lastPath.current, duration);
-                analyticsApi.timeOnPage(lastPath.current, duration);
+                analytics.pageLeave(lastPath.current, duration);
+                analytics.timeOnPage(lastPath.current, duration);
             }
         };
 

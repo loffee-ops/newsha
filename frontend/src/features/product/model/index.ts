@@ -1,28 +1,66 @@
-export { productReducer, clearSelected, clearSearchResults } from "./product.slice";
+export type { ProductState, ProductListMeta } from "./product.state";
+export type { AdminProductsState } from "./admin-products.state";
+
+export { fetchProducts, fetchProductById, fetchProductBySlug } from "./product.thunks";
 
 export {
-    fetchProducts,
-    fetchProductById,
-    fetchProductBySlug,
-    searchProducts,
-} from "./product.thunks";
+    fetchAdminProducts,
+    fetchAdminProductById,
+    createAdminProduct,
+    updateAdminProduct,
+    deleteAdminProduct,
+    setAdminProductActive,
+    setAdminProductFlags,
+} from "./admin-products.thunks";
 
-export type { ProductState } from "./product.state";
+export { clearSelected, productReducer } from "./product.slice";
+
+export {
+    clearAdminProductSelected,
+    resetAdminProductCreateState,
+    resetAdminProductUpdateState,
+    resetAdminProductDeleteState,
+    resetAdminProductToggleActiveState,
+    resetAdminProductToggleFlagsState,
+    adminProductsReducer,
+} from "./admin-products.slice";
 
 export {
     selectProductState,
     selectProductPreviews,
     selectProductListMeta,
-    selectProductSearchItems,
     selectProductSelected,
     selectProductListStatus,
-    selectProductSearchStatus,
     selectProductSelectedStatus,
     selectProductError,
     selectIsProductsLoaded,
-    selectHasSearchResults,
     selectNewArrivals,
     makeSelectProductPreviewBySlug,
-    makeSelectSearchPreviewBySlug,
     makeSelectSelectedProductBySlug,
 } from "./product.selectors";
+
+export {
+    selectAdminProductsState,
+    selectAdminProducts,
+    selectAdminProductSelected,
+    selectAdminProductsStatus,
+    selectAdminProductsError,
+    selectAdminProductsPage,
+    selectAdminProductsLimit,
+    selectAdminProductsTotal,
+    selectAdminProductsTotalPages,
+    selectAdminProductsHasNext,
+    selectAdminProductsHasPrev,
+    selectAdminProductCreateStatus,
+    selectAdminProductCreateError,
+    selectAdminProductUpdateStatus,
+    selectAdminProductUpdateError,
+    selectAdminProductDeleteStatus,
+    selectAdminProductDeleteError,
+    selectAdminProductToggleActiveStatus,
+    selectAdminProductToggleActiveError,
+    selectAdminProductToggleFlagsStatus,
+    selectAdminProductToggleFlagsError,
+    selectIsAdminProductsLoading,
+    selectHasAdminProducts,
+} from "./admin-products.selectors";

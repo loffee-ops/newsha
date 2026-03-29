@@ -76,6 +76,6 @@ export function toOrder(doc: OrderDB): Order {
     };
 }
 
-export function toOrders(docs: readonly OrderDB[]): Order[] {
+export function toOrders(docs: readonly OrderDB[]): readonly Order[] {
     return docs.map(toOrder);
 }

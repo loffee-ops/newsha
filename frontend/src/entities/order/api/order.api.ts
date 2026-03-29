@@ -1,21 +1,22 @@
-import type { CheckoutDTO } from "@shared/contracts/checkout";
-import type { PaginatedResponse, PaginationQueryDTO } from "@shared/contracts/pagination";
 import type { Order } from "@shared/domain/order";
 
-export type OrdersQuery = Pick<PaginationQueryDTO, "page" | "limit">;
-export type PaginatedOrdersDTO = PaginatedResponse<Order>;
+import type { CheckoutPayload, OrdersQuery, PaginatedOrdersDTO } from "@/entities/order/types";
+
+const BASE = "/api/orders";
 
 async function json<T>(res: Response): Promise<T> {
     if (!res.ok) {
         const text = await res.text().catch(() => "");
-        throw new Error(text || res.statusText);
+        throw new Error(text || res.statusText || "Request failed");
     }
 
     return res.json() as Promise<T>;
 }
 
 function buildQuery(params?: OrdersQuery): string {
-    if (!params) return "";
+    if (!params) {
+        return "";
+    }
 
     const searchParams = new URLSearchParams();
 
@@ -32,24 +33,26 @@ function buildQuery(params?: OrdersQuery): string {
     return query ? `?${query}` : "";
 }
 
-export async function checkoutApi(payload: CheckoutDTO): Promise<Order> {
-    const res = await fetch("/api/orders/checkout", {
-        method: "POST",
-        credentials: "include",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-    });
+export const ordersApi = {
+    async checkout(payload: CheckoutPayload): Promise<Order> {
+        const res = await fetch(`${BASE}/checkout`, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+        });
 
-    return json<Order>(res);
-}
+        return json<Order>(res);
+    },
 
-export async function fetchMyOrdersApi(params?: OrdersQuery): Promise<PaginatedOrdersDTO> {
-    const res = await fetch(`/api/orders${buildQuery(params)}`, {
-        method: "GET",
-        credentials: "include",
-    });
+    async getMyOrders(params?: OrdersQuery): Promise<PaginatedOrdersDTO> {
+        const res = await fetch(`${BASE}${buildQuery(params)}`, {
+            method: "GET",
+            credentials: "include",
+        });
 
-    return json<PaginatedOrdersDTO>(res);
-}
+        return json<PaginatedOrdersDTO>(res);
+    },
+};

@@ -2,10 +2,47 @@ import type { AddToCartDTO, CartResponseDTO, RemoveFromCartDTO } from "@shared/c
 
 const BASE = "/api/cart";
 
+export class CartApiError extends Error {
+    public readonly status: number;
+
+    constructor(message: string, status: number) {
+        super(message);
+        this.name = "CartApiError";
+        this.status = status;
+    }
+}
+
+async function readErrorMessage(res: Response): Promise<string> {
+    try {
+        const contentType = res.headers.get("content-type") ?? "";
+
+        if (contentType.includes("application/json")) {
+            const data = (await res.json()) as { message?: string; error?: string };
+
+            if (typeof data.message === "string" && data.message.trim()) {
+                return data.message;
+            }
+
+            if (typeof data.error === "string" && data.error.trim()) {
+                return data.error;
+            }
+        }
+
+        const text = await res.text();
+
+        if (text.trim()) {
+            return text;
+        }
+    } catch {
+        // ignore
+    }
+
+    return res.statusText || "Request failed";
+}
+
 async function json<T>(res: Response): Promise<T> {
     if (!res.ok) {
-        const text = await res.text().catch(() => "");
-        throw new Error(text || res.statusText);
+        throw new CartApiError(await readErrorMessage(res), res.status);
     }
 
     return res.json() as Promise<T>;

@@ -1,8 +1,9 @@
 import type { ID, ISODate } from "@shared/primitives";
 import { asID } from "@shared/primitives";
-
 import type { Wishlist, WishlistItem } from "@shared/domain/wishlist";
 
+import { ProductErrors } from "@/errors";
+import { ProductModel, type ProductDoc } from "@/models/product.model";
 import { WishlistModel, type WishlistDB, type WishlistDBItem } from "@/models/wishlist.model";
 
 function now(): Date {
@@ -16,7 +17,7 @@ function createWishlistDbItem(productId: string): WishlistDBItem {
     };
 }
 
-function toWishlistItem(item: WishlistDB["items"][number]): WishlistItem {
+function toWishlistItem(item: WishlistDBItem): WishlistItem {
     return {
         productId: asID(item.productId),
         addedAt: item.addedAt.toISOString() as ISODate,
@@ -49,6 +50,15 @@ export class WishlistService {
     async add(userId: ID, productId: ID): Promise<Wishlist> {
         const userIdStr = String(userId);
         const productIdStr = String(productId);
+
+        const product = await ProductModel.findOne({
+            _id: productIdStr,
+            isActive: true,
+        }).lean<ProductDoc | null>();
+
+        if (!product) {
+            throw ProductErrors.notFound();
+        }
 
         const doc = await WishlistModel.findOne({ userId: userIdStr }).lean<WishlistDB | null>();
         const items: WishlistDBItem[] = doc?.items ?? [];
@@ -111,10 +121,19 @@ export class WishlistService {
         const userIdStr = String(userId);
         const productIdStr = String(productId);
 
+        const product = await ProductModel.findOne({
+            _id: productIdStr,
+            isActive: true,
+        }).lean<ProductDoc | null>();
+
         const doc = await WishlistModel.findOne({ userId: userIdStr }).lean<WishlistDB | null>();
         const items: WishlistDBItem[] = doc?.items ?? [];
 
         const exists = items.some((item) => item.productId === productIdStr);
+
+        if (!exists && !product) {
+            throw ProductErrors.notFound();
+        }
 
         const next: WishlistDBItem[] = exists
             ? items.filter((item) => item.productId !== productIdStr)
@@ -155,6 +174,15 @@ export class WishlistService {
     async merge(userId: ID, guestItems: readonly ID[]): Promise<Wishlist> {
         const userIdStr = String(userId);
 
+        const guestProductIds = guestItems.map((item) => String(item));
+
+        const products = await ProductModel.find({
+            _id: { $in: guestProductIds },
+            isActive: true,
+        }).lean<ProductDoc[]>();
+
+        const activeProductIds = new Set(products.map((product) => String(product._id)));
+
         const doc = await WishlistModel.findOne({ userId: userIdStr }).lean<WishlistDB | null>();
         const existing: WishlistDBItem[] = doc?.items ?? [];
 
@@ -166,6 +194,10 @@ export class WishlistService {
 
         for (const guestId of guestItems) {
             const productIdStr = String(guestId);
+
+            if (!activeProductIds.has(productIdStr)) {
+                continue;
+            }
 
             if (!byProductId.has(productIdStr)) {
                 byProductId.set(productIdStr, createWishlistDbItem(productIdStr));

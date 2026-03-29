@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { DEFAULT_LIMIT, DEFAULT_PAGE } from "@shared/lib/pagination";
 
 import type { OrderState } from "./order.state";
-import { checkoutOrder, fetchMyOrders } from "./order.thunks";
-import { toStoreOrder, toStoreOrders } from "@/entities/order/mapper";
+import { fetchMyOrders } from "./order.thunks";
+import { toStoreOrders } from "@/entities/order/mapper";
 
 const initialState: OrderState = {
     current: null,
@@ -19,8 +19,6 @@ const initialState: OrderState = {
             hasPrev: false,
         },
     },
-    checkoutStatus: "idle",
-    checkoutError: null,
     ordersStatus: "idle",
     ordersError: null,
 };
@@ -29,29 +27,12 @@ const orderSlice = createSlice({
     name: "order",
     initialState,
     reducers: {
-        resetCheckoutState(state) {
-            state.checkoutStatus = "idle";
-            state.checkoutError = null;
-        },
         clearCurrentOrder(state) {
             state.current = null;
         },
     },
     extraReducers: (builder) => {
         builder
-            .addCase(checkoutOrder.pending, (state) => {
-                state.checkoutStatus = "loading";
-                state.checkoutError = null;
-            })
-            .addCase(checkoutOrder.fulfilled, (state, action) => {
-                state.checkoutStatus = "succeeded";
-                state.checkoutError = null;
-                state.current = toStoreOrder(action.payload);
-            })
-            .addCase(checkoutOrder.rejected, (state, action) => {
-                state.checkoutStatus = "failed";
-                state.checkoutError = action.payload ?? "Failed to checkout";
-            })
             .addCase(fetchMyOrders.pending, (state) => {
                 state.ordersStatus = "loading";
                 state.ordersError = null;
@@ -71,5 +52,5 @@ const orderSlice = createSlice({
     },
 });
 
-export const { resetCheckoutState, clearCurrentOrder } = orderSlice.actions;
+export const { clearCurrentOrder } = orderSlice.actions;
 export const orderReducer = orderSlice.reducer;

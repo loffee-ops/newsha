@@ -8,7 +8,6 @@ import {
     loginHandler,
     refreshHandler,
     sessionsHandler,
-    meHandler,
     logoutHandler,
     logoutAllHandler,
     revokeSessionHandler,
@@ -22,8 +21,9 @@ authRouter.post("/google", asyncHandler(googleLoginHandler));
 authRouter.post("/register", authRateLimit, asyncHandler(registerHandler));
 authRouter.post("/login", authRateLimit, asyncHandler(loginHandler));
 authRouter.post("/refresh", refreshRateLimit, asyncHandler(refreshHandler));
-authRouter.get("/me", requireAuth, asyncHandler(meHandler));
+
 authRouter.get("/sessions", requireAuth, asyncHandler(sessionsHandler));
 authRouter.post("/sessions/:sessionId/revoke", requireAuth, asyncHandler(revokeSessionHandler));
+
 authRouter.post("/logout", requireAuth, asyncHandler(logoutHandler));
 authRouter.post("/logout-all", requireAuth, asyncHandler(logoutAllHandler));

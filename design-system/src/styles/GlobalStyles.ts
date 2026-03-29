@@ -1,10 +1,10 @@
 import { createGlobalStyle } from "styled-components";
+import montserratFont from "../assets/fonts/Montserrat.ttf";
 
 export const GlobalStyles = createGlobalStyle`
-
   @font-face {
     font-family: "Montserrat";
-    src: url("/fonts/Montserrat.ttf") format("truetype");
+    src: url(${montserratFont}) format("truetype");
     font-weight: 100 900;
     font-style: normal;
     font-display: swap;
@@ -23,7 +23,6 @@ export const GlobalStyles = createGlobalStyle`
     width: 100%;
     height: 100%;
     overscroll-behavior: contain;
-    
   }
 
   body {
@@ -48,7 +47,6 @@ export const GlobalStyles = createGlobalStyle`
     color: inherit;
   }
 
-
   * {
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -58,5 +56,4 @@ export const GlobalStyles = createGlobalStyle`
     width: 0;
     height: 0;
   }
-
 `;

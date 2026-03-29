@@ -1,0 +1,24 @@
+export { productsRouter } from "./products.routes";
+export { productFiltersRouter } from "./product-filters.routes";
+export { categoriesRouter } from "./categories.routes";
+export { bannersRouter } from "./banner.routes";
+export { reviewsRouter } from "./review.routes";
+export { authRouter } from "./auth.routes";
+export { userRouter } from "./user.routes";
+export { cartRouter } from "./cart.routes";
+export { orderRouter } from "./order.routes";
+export { wishlistRouter } from "./wishlist.routes";
+export { healthRouter } from "./health.routes";
+export { searchRouter } from "./search.routes";
+export { recentlyViewedRouter } from "./recently-viewed.routes";
+export { consultationRouter } from "./consultation.routes";
+export { analyticsRouter } from "./analytics.routes";
+export { cooperationRouter } from "./cooperation.routes";
+
+export { bannerAdminRouter } from "./admin.banner.routes";
+export { orderAdminRouter } from "./admin.order.routes";
+export { adminUsersRouter } from "./admin.users.routes";
+export { analyticsAdminRouter } from "./admin.analytics.routes";
+export { adminProductsRouter } from "./admin.products.routes";
+export { adminCategoriesRouter } from "./admin.categories.routes";
+export { adminReviewsRouter } from "./admin.reviews.routes";

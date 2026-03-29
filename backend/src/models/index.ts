@@ -2,7 +2,7 @@ export { ProductModel, ProductSchema } from "./product.model";
 export { AnalyticsEventModel, AnalyticsEventSchema } from "./analytics-event.model";
 export { BannerModel } from "./banner.model";
 export { CartModel, CartSchema } from "./cart.model";
-export { CategoryModel, CategorySchema } from "./category.model";
+export { CategoryModel, CategorySchemaType } from "./category.model";
 export { ConsultationModel, ConsultationSchema, CONSULTATION_STATUS } from "./consultation.model";
 export { CooperationModel, CooperationSchema, COOPERATION_STATUSES } from "./cooperation.model";
 export { OrderModel, OrderSchema } from "./order.model";
@@ -16,7 +16,7 @@ export { WishlistModel, WishlistSchema } from "./wishlist.model";
 
 export type { ProductDoc } from "./product.model";
 export type { AnalyticsEventDoc } from "./analytics-event.model";
-export type { CartItemDB, CartDB, CartDoc } from "./cart.model";
+export type { CartItemDB, CartDoc } from "./cart.model";
 export type { CategoryDoc } from "./category.model";
 export type { ConsultationStatus, ConsultationDoc } from "./consultation.model";
 export type { CooperationStatus, CooperationDoc } from "./cooperation.model";

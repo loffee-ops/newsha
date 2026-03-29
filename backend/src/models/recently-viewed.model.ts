@@ -14,8 +14,11 @@ RecentlyViewedSchema.index({ userId: 1, viewedAt: -1 });
 RecentlyViewedSchema.index({ productId: 1, viewedAt: -1 });
 RecentlyViewedSchema.index({ viewedAt: -1 });
 
-export const RecentlyViewedModel = mongoose.model("RecentlyViewed", RecentlyViewedSchema);
-
 export type RecentlyViewedDoc = InferSchemaType<typeof RecentlyViewedSchema> & {
     _id: mongoose.Types.ObjectId;
 };
+
+export const RecentlyViewedModel = mongoose.model<RecentlyViewedDoc>(
+    "RecentlyViewed",
+    RecentlyViewedSchema,
+);

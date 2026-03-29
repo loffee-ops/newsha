@@ -1,8 +1,8 @@
 import { Router } from "express";
 
-import { asyncHandler } from "@/lib/express";
 import { health } from "@/controllers/public/health.controller";
+import { asyncHandler } from "@/lib/express";
 
-export const healthRouter: Router = Router();
+export const healthRouter = Router();
 
 healthRouter.get("/", asyncHandler(health));

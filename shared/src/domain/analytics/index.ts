@@ -15,5 +15,6 @@ export type {
     ViewProductParams,
     BeginCheckoutEvent,
     BeginCheckoutParams,
+    AnalyticsErrorPayload,
     UTM,
 } from "./analytics.types";

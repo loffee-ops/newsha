@@ -1,7 +1,9 @@
 import type { Request } from "express";
 import { isValidObjectId } from "mongoose";
+import bcrypt from "bcryptjs";
 
 import type { User } from "@shared/domain/user";
+import type { ChangePasswordDTO, UpdateProfileDTO } from "@shared/contracts/user/user.dto";
 
 import { UserModel, type UserDoc } from "@/models/user.model";
 import { SessionModel } from "@/models/session.model";
@@ -41,10 +43,7 @@ export class UserService {
         const doc = await UserModel.findByIdAndUpdate(
             id,
             { $set: { role } },
-            {
-                new: true,
-                runValidators: true,
-            },
+            { new: true, runValidators: true },
         ).exec();
 
         if (!doc) {
@@ -72,6 +71,47 @@ export class UserService {
         }
 
         return toUser(userDoc);
+    }
+
+    async updateProfile(userId: string, dto: UpdateProfileDTO): Promise<User> {
+        validateUserId(userId);
+
+        const doc = await UserModel.findByIdAndUpdate(
+            userId,
+            {
+                $set: {
+                    name: dto.name,
+                    phone: dto.phone,
+                    avatar: dto.avatar,
+                },
+            },
+            { new: true, runValidators: true },
+        ).exec();
+
+        if (!doc) {
+            throw UserErrors.notFound();
+        }
+
+        return toUser(doc);
+    }
+
+    async changePassword(userId: string, dto: ChangePasswordDTO): Promise<void> {
+        validateUserId(userId);
+
+        const userDoc = await UserModel.findById(userId).select("+passwordHash").exec();
+
+        if (!userDoc) {
+            throw UserErrors.notFound();
+        }
+
+        const isPasswordValid = await bcrypt.compare(dto.currentPassword, userDoc.passwordHash);
+
+        if (!isPasswordValid) {
+            throw AuthErrors.invalidCredentials();
+        }
+
+        userDoc.passwordHash = await bcrypt.hash(dto.newPassword, 10);
+        await userDoc.save();
     }
 
     async getUserSessions(userId: string) {

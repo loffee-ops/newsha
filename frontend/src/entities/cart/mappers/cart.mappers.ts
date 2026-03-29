@@ -14,23 +14,17 @@ export type CartVariantMeta = {
 
 export type CartVariantMetaMap = Record<ID, readonly CartVariantMeta[]>;
 
-export function mapApiCartToStore(rows: readonly CartItem[]): readonly CartRow[] {
-    return rows.map((item) => ({
-        productId: item.productId,
-        volume: item.variant.value,
-        qty: item.qty,
-        price: item.price,
-        ...(item.oldPrice !== undefined ? { oldPrice: item.oldPrice } : {}),
-    }));
+export function mapApiCartToStore(rows: readonly CartRow[]): CartRow[] {
+    return rows.map((row) => ({ ...row }));
 }
 
 export function mapStoreCartToCartItems(
     rows: readonly CartRow[],
     variantsByProductId: CartVariantMetaMap,
-): readonly CartItem[] {
-    return rows.map((row) => {
+): CartItem[] {
+    return rows.flatMap((row) => {
         if (row.volume === null) {
-            throw new Error(`Volume is null for product: ${String(row.productId)}`);
+            return [];
         }
 
         const variants = variantsByProductId[row.productId];
@@ -48,19 +42,21 @@ export function mapStoreCartToCartItems(
         const price = row.price;
         const oldPrice = row.oldPrice ?? variant.oldPrice;
 
-        return {
-            productId: row.productId,
-            variant: {
-                value: variant.value,
-                label: variant.label,
-                unit: variant.unit,
+        return [
+            {
+                productId: row.productId,
+                variant: {
+                    value: variant.value,
+                    label: variant.label,
+                    unit: variant.unit,
+                    price,
+                    ...(oldPrice !== undefined ? { oldPrice } : {}),
+                },
                 price,
                 ...(oldPrice !== undefined ? { oldPrice } : {}),
+                qty: row.qty,
+                subtotal: calcSubtotal(price, row.qty),
             },
-            price,
-            ...(oldPrice !== undefined ? { oldPrice } : {}),
-            qty: row.qty,
-            subtotal: calcSubtotal(price, row.qty),
-        };
+        ];
     });
 }

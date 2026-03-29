@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useAppSelector } from "@/app/store/hooks";
-import { analyticsApi } from "@/app/analytics/api";
+import { analytics } from "@/entities/analytics/api";
 
 import type { CartViewItemDetailed } from "@/entities/cart/types";
 import { asQuantity } from "@shared/primitives";
@@ -66,7 +66,7 @@ export function useCartModalController() {
     }, [clearCart]);
 
     const checkout = useCallback(() => {
-        analyticsApi.beginCheckout({
+        analytics.beginCheckout({
             items: items.map((item) => ({
                 productId: item.product.id,
                 qty: item.item.qty,

@@ -1,2 +1,2 @@
-export { checkoutApi, fetchMyOrdersApi } from "./order.api";
-export type { PaginatedOrdersDTO, OrdersQuery } from "./order.api";
+export { adminOrdersApi } from "./admin-orders.api";
+export { ordersApi } from "./order.api";

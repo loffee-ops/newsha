@@ -4,14 +4,14 @@ import type { ProductVolume } from "@shared/domain/product";
 import type { AddToCartDTO, RemoveFromCartDTO } from "@shared/contracts/cart";
 import type { CartRow } from "@shared/domain/cart";
 
-import type { CartDB, CartItemDB } from "@/models/cart.model";
+import type { CartDoc, CartItemDB } from "@/models/cart.model";
 import { CartModel } from "@/models/cart.model";
 import { ProductModel, type ProductDoc } from "@/models/product.model";
 
 import { ProductErrors } from "@/errors";
 
 function makeKey(productId: ID, volume: ProductVolume | null): string {
-    return `${productId}:${volume ?? "base"}`;
+    return `${String(productId)}:${volume ?? "base"}`;
 }
 
 function toNullableVolume(volume: ProductVolume | null | undefined): ProductVolume | null {
@@ -51,8 +51,9 @@ function dbToCartRow(item: CartItemDB): CartRow {
         volume: toNullableVolume(item.volume),
         qty: asQuantity(item.qty),
         price: asMoney(item.priceSnapshot.price),
-        oldPrice:
-            item.priceSnapshot.oldPrice != null ? asMoney(item.priceSnapshot.oldPrice) : undefined,
+        ...(item.priceSnapshot.oldPrice != null
+            ? { oldPrice: asMoney(item.priceSnapshot.oldPrice) }
+            : {}),
     };
 }
 
@@ -75,8 +76,8 @@ function cartRowToDB(
 }
 
 export class CartService {
-    async getCartRows(userId: ID): Promise<CartRow[]> {
-        const cart = await CartModel.findOne({ userId: String(userId) }).lean<CartDB | null>();
+    async getCartRows(userId: ID): Promise<readonly CartRow[]> {
+        const cart = await CartModel.findOne({ userId: String(userId) }).lean<CartDoc | null>();
 
         if (!cart) {
             return [];
@@ -85,7 +86,7 @@ export class CartService {
         return cart.items.map(dbToCartRow);
     }
 
-    async addToCart(userId: ID, dto: AddToCartDTO): Promise<CartRow[]> {
+    async addToCart(userId: ID, dto: AddToCartDTO): Promise<readonly CartRow[]> {
         const qty = asQuantity(dto.qty);
 
         if (Number(qty) <= 0) {
@@ -104,12 +105,12 @@ export class CartService {
 
         const snapshot = pickSnapshotFromProduct(product, volume);
 
-        const cart = await CartModel.findOne({ userId: String(userId) }).lean<CartDB | null>();
+        const cart = await CartModel.findOne({ userId: String(userId) }).lean<CartDoc | null>();
         const items: CartItemDB[] = cart?.items ?? [];
 
         const key = makeKey(asID(dto.productId), volume);
-
         const next = [...items];
+
         const existingIndex = next.findIndex(
             (item) => makeKey(asID(item.productId), toNullableVolume(item.volume)) === key,
         );
@@ -145,8 +146,8 @@ export class CartService {
         return this.getCartRows(userId);
     }
 
-    async removeFromCart(userId: ID, dto: RemoveFromCartDTO): Promise<CartRow[]> {
-        const cart = await CartModel.findOne({ userId: String(userId) }).lean<CartDB | null>();
+    async removeFromCart(userId: ID, dto: RemoveFromCartDTO): Promise<readonly CartRow[]> {
+        const cart = await CartModel.findOne({ userId: String(userId) }).lean<CartDoc | null>();
 
         if (!cart) {
             return [];

@@ -36,7 +36,7 @@ CartSchema.index({ updatedAt: -1 });
 
 export type CartItemDB = {
     productId: string;
-    volume: number | null;
+    volume: ProductVolume | null;
     qty: number;
     priceSnapshot: {
         price: number;
@@ -44,19 +44,11 @@ export type CartItemDB = {
     };
 };
 
-export type CartDB = {
-    _id: mongoose.Types.ObjectId;
-    userId: string;
-    items: CartItemDB[];
-    createdAt: Date;
-    updatedAt: Date;
-};
-
-export const CartModel = mongoose.model<CartDB>("Cart", CartSchema);
-
 export type CartDoc = InferSchemaType<typeof CartSchema> & {
     _id: mongoose.Types.ObjectId;
     items: CartItemDB[];
     createdAt: Date;
     updatedAt: Date;
 };
+
+export const CartModel = mongoose.model<CartDoc>("Cart", CartSchema);

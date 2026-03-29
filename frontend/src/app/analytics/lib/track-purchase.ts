@@ -1,7 +1,7 @@
-import { analyticsApi } from "@/app/analytics/api";
+import { analytics } from "@/entities/analytics/api";
 
-import type { Order } from "@shared/domain/order";
 import type { PurchaseParams } from "@shared/domain/analytics";
+import type { Order } from "@shared/domain/order";
 
 function toPurchaseParams(order: Order): PurchaseParams {
     return {
@@ -11,6 +11,6 @@ function toPurchaseParams(order: Order): PurchaseParams {
     };
 }
 
-export function trackPurchase(order: Order) {
-    analyticsApi.purchase(toPurchaseParams(order));
+export function trackPurchase(order: Order): void {
+    analytics.purchase(toPurchaseParams(order));
 }

@@ -6,6 +6,7 @@ import { app } from "./app";
 
 import { redis } from "@/infrastructure/redis";
 import { logger } from "@/infrastructure/logger/logger";
+import cloudinary from "@/infrastructure/cloudinary/cloudinary.client";
 import { env } from "@/config";
 
 let server: Server | null = null;
@@ -84,6 +85,25 @@ async function start() {
 
         await mongoose.connect(env.MONGO_URI);
         logger.info("Mongo connected");
+
+        try {
+            await cloudinary.api.ping();
+            logger.info(
+                {
+                    cloudName: env.CLOUDINARY_CLOUD_NAME,
+                },
+                "Cloudinary available",
+            );
+        } catch (error) {
+            logger.warn({ err: error }, "Cloudinary unavailable");
+        }
+
+        logger.info(
+            {
+                googleClientIdExists: Boolean(env.GOOGLE_CLIENT_ID),
+            },
+            "Google auth config loaded",
+        );
 
         server = app.listen(env.PORT, () => {
             logger.info({ port: env.PORT }, "Server started");

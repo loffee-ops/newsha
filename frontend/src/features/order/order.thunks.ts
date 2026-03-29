@@ -1,30 +1,29 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import type { CheckoutDTO } from "@shared/contracts/checkout";
-import type { Order } from "@shared/domain/order";
+import type { AppThunkApiConfig } from "@/app/store/store";
 
-import { checkoutApi, fetchMyOrdersApi } from "@/entities/order/api";
-import type { OrdersQuery, PaginatedOrdersDTO } from "@/entities/order/api";
+import type { OrdersQuery, PaginatedOrdersDTO } from "@/entities/order/types";
 
-export const checkoutOrder = createAsyncThunk<Order, CheckoutDTO, { rejectValue: string }>(
-    "order/checkout",
-    async (payload, { rejectWithValue }) => {
-        try {
-            return await checkoutApi(payload);
-        } catch (error) {
-            return rejectWithValue(error instanceof Error ? error.message : "Failed to checkout");
-        }
-    },
-);
+function getErrorMessage(error: unknown, fallback: string): string {
+    if (error instanceof Error && error.message.trim()) {
+        return error.message;
+    }
+
+    if (typeof error === "string" && error.trim()) {
+        return error;
+    }
+
+    return fallback;
+}
 
 export const fetchMyOrders = createAsyncThunk<
     PaginatedOrdersDTO,
     OrdersQuery | undefined,
-    { rejectValue: string }
->("order/fetchMyOrders", async (params, { rejectWithValue }) => {
+    AppThunkApiConfig
+>("order/fetchMyOrders", async (params, { extra, rejectWithValue }) => {
     try {
-        return await fetchMyOrdersApi(params);
+        return await extra.order.getMyOrders(params);
     } catch (error) {
-        return rejectWithValue(error instanceof Error ? error.message : "Failed to load orders");
+        return rejectWithValue(getErrorMessage(error, "Failed to load orders"));
     }
 });

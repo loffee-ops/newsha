@@ -8,28 +8,31 @@ import { initSwagger } from "./docs/swagger";
 
 import { CORS_ORIGINS } from "@/config";
 
-import { productsRouter } from "@/routes/products.routes";
-import { productFiltersRouter } from "@/routes/product-filters.routes";
-import { categoriesRouter } from "@/routes/categories.routes";
-import { bannersRouter } from "@/routes/banner.routes";
-import { bannerAdminRouter } from "@/routes/admin.banner.routes";
-import { reviewsRouter } from "@/routes/review.routes";
-import { authRouter } from "@/routes/auth.routes";
-import { cartRouter } from "@/routes/cart.routes";
-import { orderRouter } from "@/routes/order.routes";
-import { wishlistRouter } from "@/routes/wishlist.routes";
-import { orderAdminRouter } from "@/routes/admin.order.routes";
-import { healthRouter } from "@/routes/health.routes";
-import { searchRouter } from "@/routes/search.routes";
-import { adminUsersRouter } from "@/routes/admin.users.routes";
-import { recentlyViewedRouter } from "@/routes/recently-viewed.routes";
-import { consultationRouter } from "@/routes/consultation.routes";
-import { analyticsRouter } from "@/routes/analytics.routes";
-import { analyticsAdminRouter } from "@/routes/admin.analytics.routes";
-import { cooperationRouter } from "@/routes/cooperation.routes";
-import { adminProductsRouter } from "@/routes/admin.products.routes";
-import { adminCategoriesRouter } from "@/routes/admin.categories.routes";
-import { adminReviewsRouter } from "@/routes/admin.reviews.routes";
+import {
+    productsRouter,
+    productFiltersRouter,
+    categoriesRouter,
+    bannersRouter,
+    bannerAdminRouter,
+    reviewsRouter,
+    authRouter,
+    userRouter,
+    cartRouter,
+    orderRouter,
+    wishlistRouter,
+    orderAdminRouter,
+    healthRouter,
+    searchRouter,
+    adminUsersRouter,
+    recentlyViewedRouter,
+    consultationRouter,
+    analyticsRouter,
+    analyticsAdminRouter,
+    cooperationRouter,
+    adminProductsRouter,
+    adminCategoriesRouter,
+    adminReviewsRouter,
+} from "@/routes";
 
 import {
     multerErrorHandler,
@@ -70,6 +73,8 @@ app.use("/api/banners", bannersRouter);
 app.use("/api/admin/banners", bannerAdminRouter);
 app.use("/api/reviews", reviewsRouter);
 app.use("/api/auth", authRouter);
+app.use("/auth", authRouter);
+app.use("/api/users", userRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/orders", orderRouter);
 app.use("/api/wishlist", wishlistRouter);

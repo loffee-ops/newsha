@@ -28,8 +28,11 @@ export default defineConfig({
             "@/widgets": path.resolve(__dirname, "./src/widgets"),
             "@/pages": path.resolve(__dirname, "./src/pages"),
             "@/types": path.resolve(__dirname, "./src/types"),
-            "@ds": path.resolve(__dirname, "../design-system/src"),
+
             "@shared": path.resolve(__dirname, "../shared/src"),
+
+            "@design-system": path.resolve(__dirname, "../design-system/src"),
+            "@ds": path.resolve(__dirname, "../design-system/src"),
         },
     },
 

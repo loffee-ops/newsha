@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
-import { analyticsApi } from "@/app/analytics/api";
+import { analytics } from "@/entities/analytics/api";
 
 import type { CheckoutFormValues } from "@/entities/checkout/types";
 import { PAYMENT_METHOD } from "@shared/domain/order";
@@ -25,7 +25,7 @@ export function useCheckoutSubmit() {
             const orderId = asID(crypto.randomUUID());
             const totalSubtotal = asSubtotal(total);
 
-            analyticsApi.purchase({
+            analytics.purchase({
                 orderId,
                 total: totalSubtotal,
                 value: totalSubtotal,

@@ -28,13 +28,13 @@ export const adminBannerApi = {
         formData.append("placement", payload.placement);
         formData.append("variant", payload.variant);
 
-        if (payload.link) formData.append("link", payload.link);
-        if (payload.alt) formData.append("alt", payload.alt);
-        if (payload.title) formData.append("title", payload.title);
-        if (payload.subTitle) formData.append("subTitle", payload.subTitle);
-        if (payload.buttonText) formData.append("buttonText", payload.buttonText);
-        if (payload.startsAt) formData.append("startsAt", payload.startsAt);
-        if (payload.endsAt) formData.append("endsAt", payload.endsAt);
+        if (payload.link != null) formData.append("link", payload.link);
+        if (payload.alt != null) formData.append("alt", payload.alt);
+        if (payload.title != null) formData.append("title", payload.title);
+        if (payload.subTitle != null) formData.append("subTitle", payload.subTitle);
+        if (payload.buttonText != null) formData.append("buttonText", payload.buttonText);
+        if (payload.startsAt != null) formData.append("startsAt", payload.startsAt);
+        if (payload.endsAt != null) formData.append("endsAt", payload.endsAt);
 
         const response = await http<AdminBannerResponse, FormData>({
             url: "/admin/banners",

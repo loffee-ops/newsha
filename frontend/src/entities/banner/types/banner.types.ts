@@ -48,15 +48,15 @@ export type UpdateBannerPayload = {
     id: ID;
     placement?: BannerPlacement;
     variant?: BannerVariant;
-    link?: Slug;
-    alt?: string;
-    title?: string;
-    subTitle?: string;
-    buttonText?: string;
+    link?: Slug | null;
+    alt?: string | null;
+    title?: string | null;
+    subTitle?: string | null;
+    buttonText?: string | null;
     isActive?: boolean;
     order?: number;
-    startsAt?: ISODate;
-    endsAt?: ISODate;
+    startsAt?: ISODate | null;
+    endsAt?: ISODate | null;
 };
 
 export type DeleteBannerPayload = DeleteBannerDTO;

@@ -1,9 +1,9 @@
 import type { Request, Response } from "express";
 
-import { ID, asID } from "@shared/primitives";
+import { asID } from "@shared/primitives";
+import type { ID } from "@shared/primitives";
 
 import { AuthErrors } from "@/errors";
-
 import { OrderService } from "@/services/order.service";
 import { validateCheckout } from "@/validation/order.validation";
 

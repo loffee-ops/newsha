@@ -1,56 +1,82 @@
-import type { CooperationLeadDTO } from "@shared/contracts/cooperation";
-import type { CooperationStatus } from "@shared/domain/cooperation";
-import type { ID, ISODate } from "@shared/primitives";
+import type {
+    CooperationDTO,
+    CooperationLeadDTO,
+} from "@shared/contracts/cooperation/cooperation.dto";
+import { CooperationStatus } from "@shared/domain/cooperation";
 
-const BASE = "/api/cooperation";
+const BASE = "/api/cooperations";
 
-export type CooperationDTO = {
-    id: ID;
-    name: string;
-    phone: string;
-    city: string;
-    message: string;
-    status: CooperationStatus;
-    createdAt: ISODate;
-    updatedAt: ISODate;
-};
+export class CooperationApiError extends Error {
+    public readonly status: number;
 
-export type DeleteCooperationResponseDTO = {
-    ok: true;
-};
+    constructor(message: string, status: number) {
+        super(message);
+        this.name = "CooperationApiError";
+        this.status = status;
+    }
+}
+
+async function readErrorMessage(res: Response): Promise<string> {
+    try {
+        const contentType = res.headers.get("content-type") ?? "";
+
+        if (contentType.includes("application/json")) {
+            const data = (await res.json()) as { message?: string; error?: string };
+
+            if (typeof data.message === "string" && data.message.trim()) {
+                return data.message;
+            }
+
+            if (typeof data.error === "string" && data.error.trim()) {
+                return data.error;
+            }
+        }
+
+        const text = await res.text();
+
+        if (text.trim()) {
+            return text;
+        }
+    } catch {
+        // ignore
+    }
+
+    return res.statusText || "Request failed";
+}
 
 async function json<T>(res: Response): Promise<T> {
     if (!res.ok) {
-        const text = await res.text().catch(() => "");
-        throw new Error(text || res.statusText);
+        throw new CooperationApiError(await readErrorMessage(res), res.status);
     }
 
     return res.json() as Promise<T>;
 }
 
 export const cooperationApi = {
-    async send(values: CooperationLeadDTO): Promise<CooperationDTO> {
+    async createCooperation(payload: CooperationLeadDTO): Promise<CooperationDTO> {
         const res = await fetch(BASE, {
             method: "POST",
+            credentials: "include",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(values),
+            body: JSON.stringify(payload),
         });
 
         return json<CooperationDTO>(res);
     },
 
-    async getAll(): Promise<CooperationDTO[]> {
+    async getAllCooperations(): Promise<CooperationDTO[]> {
         const res = await fetch(BASE, {
+            method: "GET",
             credentials: "include",
         });
 
         return json<CooperationDTO[]>(res);
     },
 
-    async updateStatus(id: ID, status: CooperationStatus): Promise<CooperationDTO> {
-        const res = await fetch(`${BASE}/${id}/status`, {
+    async updateCooperationStatus(id: string, status: CooperationStatus): Promise<CooperationDTO> {
+        const res = await fetch(`${BASE}/${encodeURIComponent(id)}/status`, {
             method: "PATCH",
             credentials: "include",
             headers: {
@@ -62,12 +88,14 @@ export const cooperationApi = {
         return json<CooperationDTO>(res);
     },
 
-    async delete(id: ID): Promise<DeleteCooperationResponseDTO> {
-        const res = await fetch(`${BASE}/${id}`, {
+    async deleteCooperation(id: string): Promise<{ ok: true }> {
+        const res = await fetch(`${BASE}/${encodeURIComponent(id)}`, {
             method: "DELETE",
             credentials: "include",
         });
 
-        return json<DeleteCooperationResponseDTO>(res);
+        return json<{ ok: true }>(res);
     },
 };
+
+export type { CooperationDTO };

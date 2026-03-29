@@ -13,8 +13,8 @@ import {
     objectContain,
 } from "./variables/mixins";
 
-import logoWhite from "@/assets/logo/logo_newsha_white.svg";
-import logoBlack from "@/assets/logo/logo_newsha.svg";
+import logoWhite from "../assets/logo/logo_newsha_white.svg";
+import logoBlack from "../assets/logo/logo_newsha.svg";
 
 export const mainTheme = {
     fontSizes,

@@ -8,12 +8,9 @@ export type ProductState = {
     items: StoreProductPreview[];
     itemsMeta: ProductListMeta;
 
-    searchItems: StoreProductPreview[];
-
     selected: StoreProduct | null;
 
     listStatus: AsyncStatus;
-    searchStatus: AsyncStatus;
     selectedStatus: AsyncStatus;
 
     error: string | null;

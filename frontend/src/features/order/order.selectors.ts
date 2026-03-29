@@ -7,22 +7,8 @@ const selectOrderState = (state: RootState) => state.order;
 export const selectCurrentOrder = createSelector([selectOrderState], (state) => state.current);
 export const selectOrdersList = createSelector([selectOrderState], (state) => state.list.data);
 export const selectOrdersMeta = createSelector([selectOrderState], (state) => state.list.meta);
-export const selectCheckoutStatus = createSelector(
-    [selectOrderState],
-    (state) => state.checkoutStatus,
-);
-
-export const selectCheckoutError = createSelector(
-    [selectOrderState],
-    (state) => state.checkoutError,
-);
-
 export const selectOrdersStatus = createSelector([selectOrderState], (state) => state.ordersStatus);
 export const selectOrdersError = createSelector([selectOrderState], (state) => state.ordersError);
-export const selectIsCheckingOut = createSelector(
-    [selectCheckoutStatus],
-    (status) => status === "loading",
-);
 
 export const selectIsOrdersLoading = createSelector(
     [selectOrdersStatus],

@@ -41,7 +41,7 @@ export async function trackEvent(req: Request, res: Response) {
 
     await service.track(event, { userId, sessionId });
 
-    res.json({ ok: true });
+    res.status(201).json({ ok: true });
 }
 
 export async function getAnalytics(req: Request, res: Response) {

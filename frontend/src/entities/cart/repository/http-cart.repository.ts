@@ -2,26 +2,27 @@ import type { CartRow } from "@shared/domain/cart";
 import type { AddToCartDTO, RemoveFromCartDTO } from "@shared/contracts/cart";
 
 import { cartApi } from "../api/cart.api";
+import { mapApiCartToStore } from "@/entities/cart/mappers";
 import type { CartRepository } from "./cart.repository";
 
 export class HttpCartRepository implements CartRepository {
-    async getCart(): Promise<readonly CartRow[]> {
+    async getCart(): Promise<CartRow[]> {
         const response = await cartApi.getCart();
-        return response.items;
+        return mapApiCartToStore(response.items);
     }
 
-    async addToCart(payload: AddToCartDTO): Promise<readonly CartRow[]> {
+    async addToCart(payload: AddToCartDTO): Promise<CartRow[]> {
         const response = await cartApi.addToCart(payload);
-        return response.items;
+        return mapApiCartToStore(response.items);
     }
 
-    async removeFromCart(payload: RemoveFromCartDTO): Promise<readonly CartRow[]> {
+    async removeFromCart(payload: RemoveFromCartDTO): Promise<CartRow[]> {
         const response = await cartApi.removeFromCart(payload);
-        return response.items;
+        return mapApiCartToStore(response.items);
     }
 
-    async clearCart(): Promise<readonly CartRow[]> {
+    async clearCart(): Promise<CartRow[]> {
         const response = await cartApi.clearCart();
-        return response.items;
+        return mapApiCartToStore(response.items);
     }
 }

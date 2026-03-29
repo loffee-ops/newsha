@@ -1,6 +1,8 @@
 import type { Request, Response } from "express";
+import { isValidObjectId } from "mongoose";
 
 import { asID } from "@shared/primitives";
+import type { ID } from "@shared/primitives";
 import type { WishlistItem } from "@shared/domain/wishlist";
 
 import { AuthErrors, CommonErrors } from "@/errors";
@@ -8,7 +10,7 @@ import { WishlistService } from "@/services/wishlist.service";
 
 const service = new WishlistService();
 
-function getUserId(req: Request) {
+function getUserId(req: Request): ID {
     if (!req.userId) {
         throw AuthErrors.unauthorized();
     }
@@ -16,14 +18,20 @@ function getUserId(req: Request) {
     return asID(req.userId);
 }
 
-function getProductId(req: Request) {
+function getProductId(req: Request): ID {
     const raw = req.body?.productId;
 
     if (typeof raw !== "string" || raw.trim().length === 0) {
         throw CommonErrors.badRequest("productId is required");
     }
 
-    return asID(raw.trim());
+    const productId = raw.trim();
+
+    if (!isValidObjectId(productId)) {
+        throw CommonErrors.badRequest("Invalid productId");
+    }
+
+    return asID(productId);
 }
 
 function toWishlistResponse(items: readonly WishlistItem[]) {

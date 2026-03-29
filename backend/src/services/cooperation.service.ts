@@ -1,6 +1,9 @@
 import { isValidObjectId } from "mongoose";
 
-import type { CooperationLeadDTO } from "@shared/contracts/cooperation";
+import type {
+    CooperationDTO,
+    CooperationLeadDTO,
+} from "@shared/contracts/cooperation/cooperation.dto";
 import { COOPERATION_STATUSES } from "@shared/domain/cooperation";
 
 import {
@@ -9,6 +12,7 @@ import {
     type CooperationStatus,
 } from "@/models/cooperation.model";
 import { CommonErrors } from "@/errors";
+import { toCooperationDTO, toCooperationDTOList } from "@/mappers/cooperation";
 
 function validateCooperationId(id: string) {
     if (!isValidObjectId(id)) {
@@ -23,7 +27,7 @@ function validateStatus(status: CooperationStatus) {
 }
 
 export class CooperationService {
-    async create(dto: CooperationLeadDTO): Promise<CooperationDoc> {
+    async create(dto: CooperationLeadDTO): Promise<CooperationDTO> {
         const doc = await CooperationModel.create({
             name: dto.name,
             phone: dto.phone,
@@ -31,27 +35,33 @@ export class CooperationService {
             message: dto.message,
         });
 
-        return doc.toObject();
+        return toCooperationDTO(doc.toObject());
     }
 
-    async getAll(): Promise<CooperationDoc[]> {
-        return CooperationModel.find().sort({ createdAt: -1 }).lean<CooperationDoc[]>();
+    async getAll(): Promise<CooperationDTO[]> {
+        const docs = await CooperationModel.find().sort({ createdAt: -1 }).lean<CooperationDoc[]>();
+
+        return toCooperationDTOList(docs);
     }
 
-    async updateStatus(id: string, status: CooperationStatus): Promise<CooperationDoc | null> {
+    async updateStatus(id: string, status: CooperationStatus): Promise<CooperationDTO | null> {
         validateCooperationId(id);
         validateStatus(status);
 
-        return CooperationModel.findByIdAndUpdate(
+        const doc = await CooperationModel.findByIdAndUpdate(
             id,
             { $set: { status } },
             { new: true, runValidators: true },
         ).lean<CooperationDoc | null>();
+
+        return doc ? toCooperationDTO(doc) : null;
     }
 
-    async delete(id: string): Promise<CooperationDoc | null> {
+    async delete(id: string): Promise<CooperationDTO | null> {
         validateCooperationId(id);
 
-        return CooperationModel.findByIdAndDelete(id).lean<CooperationDoc | null>();
+        const doc = await CooperationModel.findByIdAndDelete(id).lean<CooperationDoc | null>();
+
+        return doc ? toCooperationDTO(doc) : null;
     }
 }

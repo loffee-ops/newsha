@@ -1,21 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import type { ProductState } from "./product.state";
-import {
-    fetchProductById,
-    fetchProductBySlug,
-    fetchProducts,
-    searchProducts,
-} from "./product.thunks";
+import { fetchProductById, fetchProductBySlug, fetchProducts } from "./product.thunks";
 
 const initialState: ProductState = {
     items: [],
     itemsMeta: null,
-    searchItems: [],
     selected: null,
 
     listStatus: "idle",
-    searchStatus: "idle",
     selectedStatus: "idle",
 
     error: null,
@@ -28,10 +21,6 @@ export const productSlice = createSlice({
         clearSelected(state) {
             state.selected = null;
             state.selectedStatus = "idle";
-        },
-        clearSearchResults(state) {
-            state.searchItems = [];
-            state.searchStatus = "idle";
         },
     },
     extraReducers: (builder) => {
@@ -78,23 +67,9 @@ export const productSlice = createSlice({
                 state.selectedStatus = "failed";
                 state.error = action.payload ?? "FAILED_TO_LOAD_PRODUCT";
                 state.selected = null;
-            })
-
-            .addCase(searchProducts.pending, (state) => {
-                state.searchStatus = "loading";
-                state.error = null;
-            })
-            .addCase(searchProducts.fulfilled, (state, action) => {
-                state.searchStatus = "succeeded";
-                state.searchItems = action.payload;
-            })
-            .addCase(searchProducts.rejected, (state, action) => {
-                state.searchStatus = "failed";
-                state.error = action.payload ?? "FAILED_TO_SEARCH_PRODUCTS";
-                state.searchItems = [];
             });
     },
 });
 
 export const productReducer = productSlice.reducer;
-export const { clearSelected, clearSearchResults } = productSlice.actions;
+export const { clearSelected } = productSlice.actions;

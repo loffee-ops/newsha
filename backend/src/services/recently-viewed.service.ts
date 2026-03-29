@@ -4,6 +4,7 @@ import type { ID } from "@shared/primitives";
 import { RecentlyViewedModel, type RecentlyViewedDoc } from "@/models/recently-viewed.model";
 import { ProductModel, type ProductDoc } from "@/models/product.model";
 import { toProductDTO } from "@/mappers/product";
+import { ProductErrors } from "@/errors";
 
 const LIMIT = 20;
 
@@ -15,6 +16,15 @@ export class RecentlyViewedService {
     async add(userId: ID, productId: ID): Promise<void> {
         const userIdStr = String(userId);
         const productIdStr = String(productId);
+
+        const product = await ProductModel.findOne({
+            _id: productIdStr,
+            isActive: true,
+        }).lean<ProductDoc | null>();
+
+        if (!product) {
+            throw ProductErrors.notFound();
+        }
 
         await RecentlyViewedModel.updateOne(
             { userId: userIdStr, productId: productIdStr },
@@ -41,7 +51,7 @@ export class RecentlyViewedService {
         }
     }
 
-    async get(userId: ID): Promise<ProductDTO[]> {
+    async get(userId: ID): Promise<readonly ProductDTO[]> {
         const userIdStr = String(userId);
 
         const rows = await RecentlyViewedModel.find({ userId: userIdStr })

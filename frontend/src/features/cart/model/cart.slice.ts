@@ -1,6 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import type { SerializedError } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction, type SerializedError } from "@reduxjs/toolkit";
 
 import type { CartRow } from "@shared/domain/cart";
 
@@ -18,7 +16,7 @@ function setPending(state: CartState) {
     state.error = null;
 }
 
-function setFulfilled(state: CartState, action: PayloadAction<readonly CartRow[]>) {
+function setFulfilled(state: CartState, action: PayloadAction<CartRow[]>) {
     state.rows = action.payload;
     state.status = "succeeded";
     state.error = null;

@@ -1,15 +1,17 @@
 import type { Product } from "@/entities/product/types";
 
-import { analyticsApi } from "@/app/analytics/api";
-import { fireOnce } from "@/app/analytics/lib";
+import { analytics } from "@/entities/analytics/api";
+import { fireOnce } from "./event-guards";
 
-export function trackProductView(product: Product) {
+export function trackProductView(product: Product): void {
     const price = product.basePrice ?? product.volumes?.[0]?.price;
 
-    if (!price) return;
+    if (typeof price !== "number") {
+        return;
+    }
 
     fireOnce(`view_product:${product.id}`, () => {
-        analyticsApi.viewProduct({
+        analytics.viewProduct({
             productId: product.id,
             name: product.name,
             price,

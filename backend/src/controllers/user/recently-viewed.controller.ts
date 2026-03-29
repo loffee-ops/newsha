@@ -2,13 +2,14 @@ import type { Request, Response } from "express";
 import { isValidObjectId } from "mongoose";
 
 import { asID } from "@shared/primitives";
+import type { ID } from "@shared/primitives";
 
 import { CommonErrors, AuthErrors } from "@/errors";
 import { RecentlyViewedService } from "@/services/recently-viewed.service";
 
 const service = new RecentlyViewedService();
 
-function getUserId(req: Request) {
+function getUserId(req: Request): ID {
     if (!req.userId) {
         throw AuthErrors.unauthorized();
     }
@@ -16,7 +17,7 @@ function getUserId(req: Request) {
     return asID(req.userId);
 }
 
-function getProductId(req: Request) {
+function getProductId(req: Request): ID {
     const raw = req.params.productId;
 
     if (typeof raw !== "string" || raw.trim().length === 0) {

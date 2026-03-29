@@ -8,11 +8,8 @@ import { ScrollManager } from "@/app/providers/ScrollManager";
 import { AppBootstrap } from "@/app/providers/AppBootstrap";
 import { ErrorFallback } from "@design-system/ui/ErrorFallback";
 import { ThemeProvider } from "@design-system/provider";
-import {
-    AnalyticsProvider,
-    AnalyticsRouterBoundary,
-    PageLifecycleTracker,
-} from "@/app/analytics/ui";
+import { AnalyticsRouterBoundary, PageLifecycleTracker } from "@/app/analytics/ui";
+import { AnalyticsProvider } from "../AnalyticsProvider";
 
 import { GlobalStyles } from "@design-system/styles";
 

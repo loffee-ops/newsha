@@ -6,7 +6,7 @@ const BASE = "/api/categories";
 async function json<T>(res: Response): Promise<T> {
     if (!res.ok) {
         const text = await res.text().catch(() => "");
-        throw new Error(text || res.statusText);
+        throw new Error(text || res.statusText || "Request failed");
     }
 
     return res.json() as Promise<T>;
@@ -19,7 +19,7 @@ export const categoriesApi = {
     },
 
     async getCategoryBySlug(slug: Slug): Promise<CategoryDTO | null> {
-        const res = await fetch(`${BASE}/slug/${slug}`);
+        const res = await fetch(`${BASE}/slug/${encodeURIComponent(slug)}`);
 
         if (res.status === 404) {
             return null;

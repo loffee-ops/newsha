@@ -1,7 +1,6 @@
 import { Router } from "express";
 
 import { requireAuth } from "@/middleware/auth.middleware";
-
 import { asyncHandler } from "@/lib/express";
 import {
     getWishlist,

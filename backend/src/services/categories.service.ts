@@ -21,11 +21,7 @@ export class CategoryService {
     }
 
     async getPublicList(): Promise<CategoryDoc[]> {
-        const docs = await CategoryModel.find({ isActive: true })
-            .sort({ name: 1 })
-            .lean<CategoryDoc[]>();
-
-        return docs;
+        return CategoryModel.find({ isActive: true }).sort({ name: 1 }).lean<CategoryDoc[]>();
     }
 
     async getById(id: string): Promise<CategoryDoc> {
@@ -40,7 +36,7 @@ export class CategoryService {
 
     async getPublicBySlug(slug: string): Promise<CategoryDoc> {
         const doc = await CategoryModel.findOne({
-            slug,
+            slug: slug.trim().toLowerCase(),
             isActive: true,
         }).lean<CategoryDoc | null>();
 
@@ -56,13 +52,13 @@ export class CategoryService {
             name: data.name,
             nameEn: data.nameEn,
             nameUa: data.nameUa,
-            slug: data.slug,
-            image: data.image,
-            description: data.description,
+            slug: data.slug.trim().toLowerCase(),
+            image: data.image ?? null,
+            description: data.description ?? null,
             isActive: data.isActive ?? true,
         });
 
-        return doc.toObject();
+        return doc.toObject() as CategoryDoc;
     }
 
     async update(id: string, data: UpdateCategoryChanges): Promise<CategoryDoc> {
@@ -71,7 +67,7 @@ export class CategoryService {
         if (data.name !== undefined) update.name = data.name;
         if (data.nameEn !== undefined) update.nameEn = data.nameEn;
         if (data.nameUa !== undefined) update.nameUa = data.nameUa;
-        if (data.slug !== undefined) update.slug = data.slug;
+        if (data.slug !== undefined) update.slug = data.slug.trim().toLowerCase();
         if (data.image !== undefined) update.image = data.image;
         if (data.description !== undefined) update.description = data.description;
         if (data.isActive !== undefined) update.isActive = data.isActive;
