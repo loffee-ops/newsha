@@ -20,13 +20,15 @@ export enum ProductVolume {
     ML_1000 = 1000,
 }
 
+export type ProductUnit = "ml" | "g" | "pcs";
+
 export type ProductVolumeVariant = {
     value: ProductVolume;
     label: string;
+    unit: ProductUnit;
     price: Money;
     oldPrice?: Money;
     inStock: boolean;
-    unit?: "ml" | "g" | "pcs";
 };
 
 export type GalleryImage = {

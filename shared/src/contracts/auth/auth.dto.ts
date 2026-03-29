@@ -1,3 +1,5 @@
+import type { User } from "@shared/domain/user";
+
 export interface LoginDTO {
     email: string;
     password: string;
@@ -11,7 +13,7 @@ export interface RegisterDTO {
 }
 
 export interface AuthResponseDTO {
-    user: import("@shared/domain/user").User;
+    user: User;
 }
 
 export interface LogoutResponseDTO {

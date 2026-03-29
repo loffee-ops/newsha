@@ -1,6 +1,6 @@
 import type { Request, Response } from "express";
 
-import { asID } from "@shared/primitives";
+import { ID, asID } from "@shared/primitives";
 
 import { AuthErrors } from "@/errors";
 
@@ -9,7 +9,7 @@ import { validateCheckout } from "@/validation/order.validation";
 
 const service = new OrderService();
 
-function getUserId(req: Request) {
+function getUserId(req: Request): ID {
     if (!req.userId) {
         throw AuthErrors.unauthorized();
     }

@@ -1,0 +1,1 @@
+export const PAGE_LIFECYCLE_MIN_DURATION = 2;

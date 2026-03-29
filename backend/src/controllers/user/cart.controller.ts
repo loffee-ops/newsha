@@ -45,5 +45,5 @@ export async function clearCart(req: Request, res: Response) {
     const userId = getUserId(req);
     await cartService.clearCart(userId);
 
-    res.json({ ok: true });
+    res.json({ items: [] });
 }

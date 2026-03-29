@@ -1,11 +1,45 @@
-import { asID, asSlug, asMoney } from "@shared/primitives";
+import { asID, asMoney, asSlug } from "@shared/primitives";
 import type { ProductDTO } from "@shared/contracts/product";
 import type { ProductGallery, ProductVolumeVariant } from "@shared/domain/product";
 
 import type { ProductDoc } from "@/models/product.model";
 
-function toMoney(v: number | null | undefined) {
-    return v != null ? asMoney(v) : undefined;
+function toMoney(value: number | null | undefined) {
+    return value != null ? asMoney(value) : undefined;
+}
+
+function toGallery(gallery: ProductDoc["gallery"]): ProductGallery {
+    return gallery.map((item) => {
+        if (item.type === "video") {
+            return {
+                type: "video" as const,
+                url: item.url,
+                urlPreview: item.urlPreview || undefined,
+            };
+        }
+
+        return {
+            type: "image" as const,
+            url: item.url,
+            alt: item.alt || undefined,
+            isPrimary: item.isPrimary ?? false,
+        };
+    });
+}
+
+function toVolumes(volumes: ProductDoc["volumes"]): readonly ProductVolumeVariant[] | undefined {
+    if (!volumes.length) {
+        return undefined;
+    }
+
+    return volumes.map((item) => ({
+        value: item.value,
+        label: item.label,
+        unit: item.unit,
+        price: asMoney(item.price),
+        oldPrice: toMoney(item.oldPrice),
+        inStock: item.inStock ?? true,
+    }));
 }
 
 export function toProductDTO(doc: ProductDoc): ProductDTO {
@@ -17,27 +51,18 @@ export function toProductDTO(doc: ProductDoc): ProductDTO {
         nameUa: doc.nameUa,
         slug: asSlug(doc.slug),
         categoryId: asID(doc.categoryId.toString()),
-        image: doc.image ?? undefined,
-        gallery: doc.gallery as ProductGallery,
-        price: toMoney(doc.price),
+        image: doc.image || undefined,
+        gallery: toGallery(doc.gallery),
+        price: asMoney(doc.price),
         oldPrice: toMoney(doc.oldPrice),
+        shortDescription: doc.shortDescription || undefined,
+        description: doc.description,
+        howToUse: doc.howToUse || undefined,
+        effects: doc.effects || undefined,
+        ingredients: doc.ingredients || undefined,
         basePrice: toMoney(doc.basePrice),
         baseOldPrice: toMoney(doc.baseOldPrice),
-        volumes: doc.volumes.length
-            ? (doc.volumes.map((v) => ({
-                  value: v.value,
-                  label: v.label,
-                  unit: v.unit,
-                  price: asMoney(v.price),
-                  oldPrice: toMoney(v.oldPrice),
-                  inStock: true,
-              })) as readonly ProductVolumeVariant[])
-            : undefined,
-        shortDescription: doc.shortDescription ?? undefined,
-        description: doc.description,
-        howToUse: doc.howToUse ?? undefined,
-        effects: doc.effects ?? undefined,
-        ingredients: doc.ingredients ?? undefined,
+        volumes: toVolumes(doc.volumes),
         tags: doc.tags.length ? doc.tags : undefined,
         needs: doc.needs.length ? doc.needs : undefined,
         condition: doc.condition.length ? doc.condition : undefined,

@@ -1,0 +1,21 @@
+{
+    "name": "@newsha/design-system",
+    "private": true,
+    "version": "1.0.0",
+    "type": "module",
+    "main": "src/index.ts",
+    "types": "src/index.ts",
+    "scripts": {
+        "typecheck": "tsc --noEmit"
+    },
+    "peerDependencies": {
+        "react": "^19.2.0",
+        "react-dom": "^19.2.0",
+        "styled-components": "^6.3.11"
+    },
+    "devDependencies": {
+        "@types/react": "^19.2.7",
+        "@types/react-dom": "^19.2.3",
+        "typescript": "~5.9.3"
+    }
+}

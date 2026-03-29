@@ -1,0 +1,16 @@
+export { AboutPage } from "./AboutPage";
+export { CartPage } from "./CartPage";
+export { CatalogPage } from "./CatalogPage";
+export { CheckoutPage } from "./CheckoutPage";
+export { CheckoutSuccessPage } from "./CheckoutSuccessPage";
+export { ConsultationPage } from "./ConsultationPage";
+export { ContactsPage } from "./ContactsPage";
+export { CooperationPage } from "./CooperationPage";
+export { DeliveryPaymentPage } from "./DeliveryPaymentPage";
+export { FAQPage } from "./FAQPage";
+export { HomePage } from "./HomePage";
+export { OrderTrackingPage } from "./OrderTrackingPage";
+export { ProductPage } from "./ProductPage";
+export { ReturnExchangePage } from "./ReturnExchangePage";
+export { SearchPage } from "./SearchPage";
+export { WishlistPage } from "./WishlistPage";

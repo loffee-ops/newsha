@@ -55,8 +55,14 @@ export type AnalyticsEvent =
     | PageLeaveEvent
     | TimeOnPageEvent;
 
+export type ViewProductEvent = Extract<AnalyticsEvent, { type: "view_product" }>;
+export type ViewProductParams = Omit<ViewProductEvent, "type">;
+
 export type AddToCartEvent = Extract<AnalyticsEvent, { type: "add_to_cart" }>;
 export type AddToCartParams = Omit<AddToCartEvent, "type">;
+
+export type BeginCheckoutEvent = Extract<AnalyticsEvent, { type: "begin_checkout" }>;
+export type BeginCheckoutParams = Omit<BeginCheckoutEvent, "type">;
 
 export type PurchaseEvent = Extract<AnalyticsEvent, { type: "purchase" }>;
 export type PurchaseParams = Omit<PurchaseEvent, "type">;

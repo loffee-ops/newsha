@@ -8,12 +8,12 @@ import { ProductService } from "@/services/product.service";
 
 const service = new ProductService();
 
-function getParam(v: string | string[]): string {
-    if (Array.isArray(v)) {
-        throw CommonErrors.badRequest("Invalid param");
+function getParam(v: unknown, name = "param"): string {
+    if (typeof v !== "string" || !v.trim()) {
+        throw CommonErrors.badRequest(`Invalid ${name}`);
     }
 
-    return v;
+    return v.trim();
 }
 
 export async function getProducts(
@@ -27,16 +27,8 @@ export async function getProducts(
     res.json(items);
 }
 
-export async function getAllProducts(_req: Request, res: Response) {
-    res.set("Cache-Control", "public, max-age=300");
-
-    const items = await service.getList({});
-
-    res.json(items);
-}
-
 export async function getProductById(req: Request, res: Response) {
-    const id = getParam(req.params.id);
+    const id = getParam(req.params.id, "id");
 
     res.set("Cache-Control", "public, max-age=600");
 
@@ -46,7 +38,7 @@ export async function getProductById(req: Request, res: Response) {
 }
 
 export async function getProductBySlug(req: Request, res: Response) {
-    const slug = getParam(req.params.slug);
+    const slug = getParam(req.params.slug, "slug");
 
     res.set("Cache-Control", "public, max-age=600");
 

@@ -1,5 +1,6 @@
-import type { Money, ID, Slug } from "@shared/primitives";
+import type { PaginationQueryDTO } from "@shared/contracts/pagination";
 import type { ProductGallery, ProductVolumeVariant } from "@shared/domain/product";
+import type { ID, Money, Slug } from "@shared/primitives";
 
 export type ProductDTO = {
     id: ID;
@@ -11,7 +12,7 @@ export type ProductDTO = {
     categoryId: ID;
     image?: string;
     gallery: ProductGallery;
-    price?: Money;
+    price: Money;
     oldPrice?: Money;
     shortDescription?: string;
     description: string;
@@ -28,8 +29,8 @@ export type ProductDTO = {
     isBestseller?: boolean;
     isTop?: boolean;
     isActive: boolean;
-    ratingAvg?: number;
-    ratingCount?: number;
+    ratingAvg: number;
+    ratingCount: number;
 };
 
 export type ProductPreviewDTO = {
@@ -46,8 +47,8 @@ export type ProductPreviewDTO = {
     isBestseller?: boolean;
     isTop?: boolean;
     categoryId: ID;
-    ratingAvg?: number;
-    ratingCount?: number;
+    ratingAvg: number;
+    ratingCount: number;
 };
 
 export type ProductFiltersDTO = {
@@ -61,7 +62,37 @@ export type ProductFiltersDTO = {
     };
 };
 
-export type ProductsQuery = {
+export type CreateProductDTO = {
+    code: string;
+    name: string;
+    nameEn?: string;
+    nameUa?: string;
+    slug: Slug;
+    categoryId: ID;
+    image?: string;
+    gallery?: ProductGallery;
+    price: Money;
+    oldPrice?: Money;
+    shortDescription?: string;
+    description: string;
+    howToUse?: string;
+    effects?: string;
+    ingredients?: string;
+    basePrice?: Money;
+    baseOldPrice?: Money;
+    volumes?: readonly ProductVolumeVariant[];
+    tags?: readonly string[];
+    needs?: readonly string[];
+    condition?: readonly string[];
+    isNew?: boolean;
+    isBestseller?: boolean;
+    isTop?: boolean;
+    isActive?: boolean;
+};
+
+export type UpdateProductDTO = Partial<CreateProductDTO>;
+
+export type ProductsQuery = PaginationQueryDTO & {
     categoryId?: string;
     tags?: string;
     needs?: string;

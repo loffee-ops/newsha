@@ -1,3 +1,4 @@
+import type { CartRow } from "@shared/domain/cart";
 import type { ProductVolume } from "@shared/domain/product";
 import type { ID, Quantity } from "@shared/primitives";
 
@@ -11,4 +12,8 @@ export interface AddToCartDTO {
 export interface RemoveFromCartDTO {
     productId: ID;
     volume: ProductVolume | null;
+}
+
+export interface CartResponseDTO {
+    items: CartRow[];
 }

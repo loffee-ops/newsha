@@ -11,5 +11,9 @@ export type {
     AddToCartParams,
     PurchaseEvent,
     PurchaseParams,
+    ViewProductEvent,
+    ViewProductParams,
+    BeginCheckoutEvent,
+    BeginCheckoutParams,
     UTM,
 } from "./analytics.types";

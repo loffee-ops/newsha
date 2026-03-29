@@ -1,1 +1,1 @@
-export type { AddToCartDTO, RemoveFromCartDTO } from "./cart.dto";
+export type { AddToCartDTO, RemoveFromCartDTO, CartResponseDTO } from "./cart.dto";

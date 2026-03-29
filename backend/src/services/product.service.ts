@@ -1,6 +1,7 @@
 import type { Request } from "express";
 import { isValidObjectId } from "mongoose";
 
+import type { PaginatedResponse } from "@shared/contracts/pagination";
 import type { ProductDTO } from "@shared/contracts/product";
 import type { ProductsQuery } from "@shared/contracts/product";
 import type { ProductFilter } from "@/modules/product";
@@ -32,18 +33,46 @@ type ProductCacheDoc = {
 
 const searchService = new SearchService();
 
+const DEFAULT_PAGE = 1;
+const DEFAULT_LIMIT = 12;
+
 export class ProductService {
-    async getList(query: ProductsQuery): Promise<ProductDTO[]> {
+    async getList(query: ProductsQuery): Promise<PaginatedResponse<ProductDTO>> {
         const key = `products:list:${JSON.stringify(query)}`;
 
-        const cached = await cacheGet<ProductDTO[]>(key);
+        const cached = await cacheGet<PaginatedResponse<ProductDTO>>(key);
         if (cached) {
             return cached;
         }
 
         const filter = this.buildFilter(query);
-        const docs = await ProductModel.find(filter).lean<ProductDoc[]>();
-        const dto = docs.map(toDTO);
+
+        const rawPage = Number((query as ProductsQuery & { page?: number | string }).page);
+        const rawLimit = Number((query as ProductsQuery & { limit?: number | string }).limit);
+
+        const page = Number.isFinite(rawPage) && rawPage > 0 ? rawPage : DEFAULT_PAGE;
+        const limit = Number.isFinite(rawLimit) && rawLimit > 0 ? rawLimit : DEFAULT_LIMIT;
+        const skip = (page - 1) * limit;
+
+        const [docs, total] = await Promise.all([
+            ProductModel.find(filter).skip(skip).limit(limit).lean<ProductDoc[]>(),
+            ProductModel.countDocuments(filter),
+        ]);
+
+        const totalPages = Math.max(1, Math.ceil(total / limit));
+        const safePage = Math.min(page, totalPages);
+
+        const dto: PaginatedResponse<ProductDTO> = {
+            data: docs.map(toDTO),
+            meta: {
+                page: safePage,
+                limit,
+                total,
+                totalPages,
+                hasNext: safePage < totalPages,
+                hasPrev: safePage > 1,
+            },
+        };
 
         await cacheSet(key, dto, 300);
 

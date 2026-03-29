@@ -5,7 +5,7 @@
         "target": "ES2022",
         "module": "CommonJS",
         "moduleResolution": "Node",
-        "rootDir": "src",
+        "rootDir": "..",
         "outDir": "dist",
         "baseUrl": ".",
         "paths": {
@@ -17,6 +17,5 @@
         "resolveJsonModule": true,
         "types": ["node", "vitest/globals"]
     },
-    "include": ["src", "../shared/src/contracts/common/zod-extend.ts"],
-    "references": [{ "path": "../shared" }]
+    "include": ["src", "../shared/src"]
 }

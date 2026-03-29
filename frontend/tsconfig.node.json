@@ -1,0 +1,25 @@
+{
+    "extends": "../tsconfig.base.json",
+    "compilerOptions": {
+        "target": "ES2023",
+        "lib": ["ES2023"],
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "noEmit": true,
+        "types": ["node", "vitest/globals"],
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"],
+            "@/app/*": ["src/app/*"],
+            "@/shared/*": ["src/shared/*"],
+            "@/entities/*": ["src/entities/*"],
+            "@/features/*": ["src/features/*"],
+            "@/widgets/*": ["src/widgets/*"],
+            "@/pages/*": ["src/pages/*"],
+            "@/types/*": ["src/types/*"],
+            "@shared": ["../shared/src"],
+            "@shared/*": ["../shared/src/*"]
+        }
+    },
+    "include": ["vite.config.ts", "vitest.config.ts"]
+}

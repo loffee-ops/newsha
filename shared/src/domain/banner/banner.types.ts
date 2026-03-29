@@ -1,4 +1,4 @@
-import type { ID, ISODate } from "@shared/primitives";
+import type { ID, ISODate, Slug } from "@shared/primitives";
 
 export type BannerPlacement =
     | "home-hero"
@@ -15,7 +15,7 @@ export type BannerEntity = {
     variant: BannerVariant;
     image: string;
     order: number;
-    link?: string;
+    link?: Slug;
     isActive: boolean;
     startsAt?: ISODate;
     endsAt?: ISODate;

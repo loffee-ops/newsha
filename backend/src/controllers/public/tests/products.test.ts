@@ -10,12 +10,32 @@ describe("GET /api/products", () => {
     });
 
     it("returns product list", async () => {
-        const getListSpy = vi.spyOn(ProductService.prototype, "getList").mockResolvedValue([]);
+        const getListSpy = vi.spyOn(ProductService.prototype, "getList").mockResolvedValue({
+            data: [],
+            meta: {
+                page: 1,
+                limit: 12,
+                total: 0,
+                totalPages: 1,
+                hasNext: false,
+                hasPrev: false,
+            },
+        });
 
         const response = await request(app).get("/api/products");
 
         expect(response.status).toBe(200);
-        expect(response.body).toEqual([]);
+        expect(response.body).toEqual({
+            data: [],
+            meta: {
+                page: 1,
+                limit: 12,
+                total: 0,
+                totalPages: 1,
+                hasNext: false,
+                hasPrev: false,
+            },
+        });
         expect(getListSpy).toHaveBeenCalled();
     });
 

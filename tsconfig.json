@@ -1,4 +1,10 @@
 {
     "files": [],
-    "references": [{ "path": "./shared" }, { "path": "./backend" }]
+    "references": [
+        { "path": "./shared" },
+        { "path": "./backend" },
+        { "path": "./admin" },
+        { "path": "./frontend" },
+        { "path": "./design-system" }
+    ]
 }

@@ -4,13 +4,17 @@
     "version": "1.0.0",
     "workspaces": [
         "backend",
-        "shared"
+        "frontend",
+        "admin",
+        "shared",
+        "design-system"
     ],
     "scripts": {
         "format": "prettier --write .",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
         "dev:backend": "npm run dev -w backend",
+        "dev:frontend": "npm run dev -w frontend",
         "build": "npm run build -ws",
         "typecheck": "npm run typecheck --workspaces --if-present"
     },

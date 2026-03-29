@@ -1,0 +1,1 @@
+export { CooperationPage } from "./CooperationPage";

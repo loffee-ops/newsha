@@ -1,5 +1,5 @@
 import type { BannerEntity } from "@shared/domain/banner";
-import { asID, asISODate } from "@shared/primitives";
+import { asID, asISODate, asSlug } from "@shared/primitives";
 
 import type { BannerPersistence } from "./banner.persistence";
 
@@ -10,7 +10,7 @@ export function toBannerEntity(doc: BannerPersistence): BannerEntity {
         variant: doc.variant,
         image: doc.image,
         order: doc.order,
-        link: doc.link ?? undefined,
+        link: doc.link ? asSlug(doc.link) : undefined,
         isActive: doc.isActive,
         startsAt: doc.startsAt ? asISODate(doc.startsAt.toISOString()) : undefined,
         endsAt: doc.endsAt ? asISODate(doc.endsAt.toISOString()) : undefined,

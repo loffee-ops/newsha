@@ -1,0 +1,7 @@
+export {
+    AUTH_TEXT,
+    REGISTER_FORM_TEXT,
+    REGISTER_VALIDATION_TEXT,
+    LOGIN_FORM_TEXT,
+    LOGIN_VALIDATION_TEXT,
+} from "./auth.config";

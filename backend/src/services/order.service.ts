@@ -1,17 +1,17 @@
 import type { Request } from "express";
 
-import type { ID } from "@shared/primitives";
 import type { CheckoutDTO } from "@shared/contracts/checkout";
+import type { PaginatedResponse } from "@shared/contracts/pagination";
 import type { Order, OrderStatus } from "@shared/domain/order";
+import type { ID } from "@shared/primitives";
+import { buildPaginationMeta } from "@shared/lib/pagination/build-pagination-meta";
 
-import { OrderModel } from "@/models/order.model";
-import type { OrderDB } from "@/models/order.model";
-import { CartModel, type CartDB } from "@/models/cart.model";
-import { ProductModel, type ProductDoc } from "@/models/product.model";
-
-import { toOrder, toOrders } from "@/mappers/order";
-import { paginate, type PaginatedResult } from "@/lib/db";
 import { OrderErrors, ProductErrors } from "@/errors";
+import { paginate } from "@/lib/db";
+import { toOrder, toOrders } from "@/mappers/order";
+import { CartModel, type CartDB } from "@/models/cart.model";
+import { OrderModel, type OrderDB } from "@/models/order.model";
+import { ProductModel, type ProductDoc } from "@/models/product.model";
 
 type AdminOrderFilters = {
     status?: OrderStatus;
@@ -27,7 +27,9 @@ export class OrderService {
 
         const productIds = cart.items.map((item) => String(item.productId));
 
-        const products = await ProductModel.find({ _id: { $in: productIds } }).lean<ProductDoc[]>();
+        const products = await ProductModel.find({
+            _id: { $in: productIds },
+        }).lean<ProductDoc[]>();
 
         const productMap = new Map(products.map((product) => [String(product._id), product]));
 
@@ -107,21 +109,25 @@ export class OrderService {
         return toOrders(docs);
     }
 
-    async getUserOrdersPaginated(userId: ID, req: Request): Promise<PaginatedResult<Order>> {
+    async getUserOrdersPaginated(userId: ID, req: Request): Promise<PaginatedResponse<Order>> {
         const result = await paginate(OrderModel, { userId: String(userId) }, req, {
             sort: { createdAt: -1 },
         });
 
         return {
-            ...result,
-            items: toOrders(result.items as OrderDB[]),
+            data: toOrders(result.items as OrderDB[]),
+            meta: buildPaginationMeta({
+                page: result.page,
+                limit: result.limit,
+                total: result.total,
+            }),
         };
     }
 
     async getAdminOrdersPaginated(
         req: Request,
         filters: AdminOrderFilters = {},
-    ): Promise<PaginatedResult<Order>> {
+    ): Promise<PaginatedResponse<Order>> {
         const query: Record<string, unknown> = {};
 
         if (filters.status !== undefined) {
@@ -133,8 +139,12 @@ export class OrderService {
         });
 
         return {
-            ...result,
-            items: toOrders(result.items as OrderDB[]),
+            data: toOrders(result.items as OrderDB[]),
+            meta: buildPaginationMeta({
+                page: result.page,
+                limit: result.limit,
+                total: result.total,
+            }),
         };
     }
 

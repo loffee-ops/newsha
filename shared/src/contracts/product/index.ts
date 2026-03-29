@@ -3,4 +3,6 @@ export type {
     ProductPreviewDTO,
     ProductFiltersDTO,
     ProductsQuery,
+    CreateProductDTO,
+    UpdateProductDTO,
 } from "./product.dto";
