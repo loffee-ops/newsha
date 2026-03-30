@@ -196,6 +196,8 @@ export const ProductSchema = new mongoose.Schema(
             default: 0,
             min: 0,
         },
+        externalId: { type: String, default: null, index: true },
+        externalSource: { type: String, default: null },
     },
     { timestamps: true },
 );

@@ -23,6 +23,10 @@ const EnvSchema = z.object({
         .default(
             "http://localhost:5173,http://localhost:3000,https://newsha.com.ua,https://www.newsha.com.ua",
         ),
+    ONEC_API_URL: z.string().url().optional(),
+    ONEC_API_USERNAME: z.string().optional(),
+    ONEC_API_PASSWORD: z.string().optional(),
+    ONEC_API_TIMEOUT_MS: z.coerce.number().int().positive().default(15000),
 });
 
 const parsed = EnvSchema.safeParse(process.env);
@@ -53,3 +57,7 @@ export const GOOGLE_CLIENT_ID = env.GOOGLE_CLIENT_ID;
 export const CORS_ORIGINS = env.CORS_ORIGINS.split(",")
     .map((origin) => origin.trim())
     .filter(Boolean);
+export const ONEC_API_URL = env.ONEC_API_URL;
+export const ONEC_API_USERNAME = env.ONEC_API_USERNAME;
+export const ONEC_API_PASSWORD = env.ONEC_API_PASSWORD;
+export const ONEC_API_TIMEOUT_MS = env.ONEC_API_TIMEOUT_MS;

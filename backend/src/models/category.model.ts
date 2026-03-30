@@ -9,6 +9,8 @@ const categorySchema = new mongoose.Schema(
         image: { type: String, default: null },
         description: { type: String, default: null },
         isActive: { type: Boolean, default: true },
+        externalId: { type: String, default: null, index: true },
+        externalSource: { type: String, default: null },
     },
     {
         timestamps: true,
