@@ -9,7 +9,6 @@ export const selectOrdersList = createSelector([selectOrderState], (state) => st
 export const selectOrdersMeta = createSelector([selectOrderState], (state) => state.list.meta);
 export const selectOrdersStatus = createSelector([selectOrderState], (state) => state.ordersStatus);
 export const selectOrdersError = createSelector([selectOrderState], (state) => state.ordersError);
-
 export const selectIsOrdersLoading = createSelector(
     [selectOrdersStatus],
     (status) => status === "loading",

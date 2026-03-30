@@ -5,7 +5,6 @@ import type { RootState } from "@/app/store";
 const selectUserState = (state: RootState) => state.user;
 
 export const selectUserProfile = createSelector([selectUserState], (state) => state.profile);
-
 export const selectUserProfileStatus = createSelector(
     [selectUserState],
     (state) => state.profileStatus,

@@ -17,13 +17,9 @@ export const selectAdminUsersStatus = createSelector(
 );
 
 export const selectAdminUsersError = createSelector([selectAdminUserState], (state) => state.error);
-
 export const selectAdminUsersPage = createSelector([selectAdminUserState], (state) => state.page);
-
 export const selectAdminUsersLimit = createSelector([selectAdminUserState], (state) => state.limit);
-
 export const selectAdminUsersTotal = createSelector([selectAdminUserState], (state) => state.total);
-
 export const selectAdminUsersTotalPages = createSelector(
     [selectAdminUserState],
     (state) => state.totalPages,

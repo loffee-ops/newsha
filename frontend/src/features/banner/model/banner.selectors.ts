@@ -7,7 +7,6 @@ const selectBannerState = (state: RootState) => state.banner;
 export const selectBanners = createSelector([selectBannerState], (state) => state.items);
 export const selectBannerStatus = createSelector([selectBannerState], (state) => state.status);
 export const selectBannerError = createSelector([selectBannerState], (state) => state.error);
-
 export const selectIsBannerLoading = createSelector(
     [selectBannerStatus],
     (status) => status === "loading",

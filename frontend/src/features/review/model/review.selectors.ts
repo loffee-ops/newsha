@@ -7,7 +7,6 @@ const selectReviewState = (state: RootState) => state.review;
 export const selectReviews = createSelector([selectReviewState], (state) => state.items);
 export const selectReviewsStatus = createSelector([selectReviewState], (state) => state.status);
 export const selectReviewsError = createSelector([selectReviewState], (state) => state.error);
-
 export const selectCreateReviewStatus = createSelector(
     [selectReviewState],
     (state) => state.createStatus,
