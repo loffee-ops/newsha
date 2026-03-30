@@ -4,7 +4,8 @@ import type { ProductVolume } from "@shared/domain/product";
 import type { ID } from "@shared/primitives";
 import { asQuantity } from "@shared/primitives";
 
-import { useAppDispatch } from "@/app/store/hooks";
+import { useAppDispatch } from "@/app/store";
+
 import { addToCart } from "@/features/cart/model";
 
 type Options = {

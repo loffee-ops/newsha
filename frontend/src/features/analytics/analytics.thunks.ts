@@ -1,11 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
+import type { AppThunkApiConfig } from "@/app/store";
+
 import {
     getErrorMessage,
     type AnalyticsStatsDTO,
     type AnalyticsStoredEventDTO,
 } from "@/entities/analytics/api";
-import type { AppThunkApiConfig } from "@/app/store/store";
 
 import type { AnalyticsStoredEventState } from "./analytics.types";
 

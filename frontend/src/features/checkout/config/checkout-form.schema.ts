@@ -1,5 +1,6 @@
-import type { FormSchema } from "@/shared/lib/forms";
 import type { CheckoutFormValues } from "@/entities/checkout/types";
+
+import type { FormSchema } from "@/shared/lib/forms";
 
 import { CHECKOUT_FORM_TEXT as M } from "./checkout-form.text";
 

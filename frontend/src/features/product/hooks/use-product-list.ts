@@ -1,11 +1,11 @@
 import { useMemo } from "react";
 import { useSearchParams, useParams } from "react-router-dom";
 
-import { useAppSelector } from "@/app/store/hooks";
+import { useAppSelector } from "@/app/store";
 
 import type { StoreProductPreview } from "@/entities/product/types";
-import { parseProductFilters } from "../lib";
 
+import { parseProductFilters } from "@/features/product/lib";
 import { selectProductPreviews, selectProductListStatus } from "@/features/product/model";
 import { selectCategories } from "@/features/category/model";
 

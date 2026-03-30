@@ -2,6 +2,7 @@ import type { RouteObject } from "react-router-dom";
 
 import { AdminRoute } from "@/app/routing";
 import { ROUTES } from "@/app/navigation/config";
+
 import {
     AdminAnalyticsPage,
     AdminBannersPage,

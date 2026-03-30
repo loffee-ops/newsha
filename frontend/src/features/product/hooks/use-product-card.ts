@@ -1,17 +1,18 @@
 import { useCallback, useMemo, useRef, useState, useEffect } from "react";
 
-import { useAppDispatch } from "@/app/store/hooks";
+import { asQuantity } from "@shared/primitives";
+
+import { useToast } from "@design-system/ui/Toast/hooks";
+
+import { useAppDispatch } from "@/app/store";
 
 import type { ProductPreview, ProductVolumeOption } from "@/entities/product/types";
-
 import { USE_PRODUCT_CARD_TEXT } from "@/entities/product/config";
+
 import { openCart } from "@/features/cart/model";
 import { useCartActions } from "@/features/cart/hooks";
-import { useWishlist } from "@/features/wishlist/hooks";
-
-import { asQuantity } from "@shared/primitives";
-import { useToast } from "@design-system/ui/Toast/hooks";
 import { animateFlyToCart } from "@/features/cart/lib";
+import { useWishlist } from "@/features/wishlist/hooks";
 
 export function useProductCard(product: ProductPreview) {
     const dispatch = useAppDispatch();

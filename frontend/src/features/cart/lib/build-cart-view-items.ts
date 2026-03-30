@@ -1,8 +1,8 @@
 import type { CartRow } from "@shared/domain/cart";
+import { calcSubtotal } from "@shared/primitives";
+
 import type { StoreProductPreview } from "@/entities/product/types";
 import type { CartViewItem, CartViewItemDetailed } from "@/entities/cart/types";
-
-import { calcSubtotal } from "@shared/primitives";
 
 export function buildCartViewItems(
     rows: readonly CartRow[],

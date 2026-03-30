@@ -2,7 +2,7 @@ import { useCallback } from "react";
 
 import { useAppDispatch } from "@/app/store/hooks";
 
-import { closeCart } from "@/features/cart/model/cart-ui.slice";
+import { closeCart } from "@/features/cart/model";
 
 import { useEscapeClose } from "./use-escape-close";
 

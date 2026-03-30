@@ -1,3 +1,5 @@
+import { ENV } from "@/shared/config/env";
+
 import { normalizeError } from "@/app/error/lib";
 import {
     HttpError,
@@ -9,7 +11,6 @@ import {
 } from "@/app/http/errors";
 import { getRequestInterceptors, getResponseInterceptors } from "@/app/http/interceptors";
 import type { HttpRequest, HttpResponse, QueryValue, RawHttpResponse } from "@/app/http/types";
-import { ENV } from "@/shared/config/env";
 
 function appendQueryValue(params: URLSearchParams, key: string, value: QueryValue): void {
     if (value === null || value === undefined) {

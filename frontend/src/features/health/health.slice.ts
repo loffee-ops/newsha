@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import type { HealthResponse } from "@shared/contracts/health";
+
 import type { AsyncStatus } from "@/shared/config";
 
 import { fetchHealth } from "./health.thunks";

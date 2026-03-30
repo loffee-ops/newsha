@@ -1,8 +1,9 @@
 import type { CartRow } from "@shared/domain/cart";
 import type { AddToCartDTO, RemoveFromCartDTO } from "@shared/contracts/cart";
 
-import { cartApi } from "../api/cart.api";
+import { cartApi } from "@/entities/cart/api";
 import { mapApiCartToStore } from "@/entities/cart/mappers";
+
 import type { CartRepository } from "./cart.repository";
 
 export class HttpCartRepository implements CartRepository {

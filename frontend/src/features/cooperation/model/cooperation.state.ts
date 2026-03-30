@@ -1,5 +1,6 @@
+import type { CooperationDTO } from "@shared/contracts/cooperation";
+
 import type { AsyncStatus } from "@/shared/config";
-import type { CooperationDTO } from "@shared/contracts/cooperation/cooperation.dto";
 
 export interface CooperationState {
     items: readonly CooperationDTO[];

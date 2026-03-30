@@ -3,7 +3,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import type { LoginDTO, RegisterDTO } from "@shared/contracts/auth";
 import type { AuthSession } from "@shared/domain/auth";
 
-import type { AppThunkApiConfig } from "@/app/store/store";
+import type { AppThunkApiConfig } from "@/app/store";
+
 import { AUTH_TEXT } from "@/features/auth/config";
 
 function getErrorMessage(error: unknown, fallback: string): string {

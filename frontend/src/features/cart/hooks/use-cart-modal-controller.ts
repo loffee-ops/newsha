@@ -1,20 +1,22 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { useAppSelector } from "@/app/store/hooks";
-import { analytics } from "@/entities/analytics/api";
-
-import type { CartViewItemDetailed } from "@/entities/cart/types";
 import { asQuantity } from "@shared/primitives";
 
-import { useCartActions } from "./use-cart-actions";
-import { useCartModal } from "./use-cart-modal";
+import { useAppSelector } from "@/app/store";
+
+import { analytics } from "@/entities/analytics/api";
+import type { CartViewItemDetailed } from "@/entities/cart/types";
+
 import {
     selectIsCartOpen,
     selectCartCount,
     selectCartTotal,
     selectCartItemsDetailed,
 } from "@/features/cart/model";
+
+import { useCartActions } from "./use-cart-actions";
+import { useCartModal } from "./use-cart-modal";
 
 export function useCartModalController() {
     const open = useAppSelector(selectIsCartOpen);

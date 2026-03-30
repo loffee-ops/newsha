@@ -1,12 +1,13 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
-import { analytics } from "@/entities/analytics/api";
-
-import type { CheckoutFormValues } from "@/entities/checkout/types";
 import { PAYMENT_METHOD } from "@shared/domain/order";
 import { asID, asSubtotal } from "@shared/primitives";
+
+import { useAppDispatch, useAppSelector } from "@/app/store";
+
+import { analytics } from "@/entities/analytics/api";
+import type { CheckoutFormValues } from "@/entities/checkout/types";
 
 import { selectCartTotal, clearCart } from "@/features/cart/model";
 

@@ -2,7 +2,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import type { CheckoutDTO } from "@shared/contracts/checkout";
 import type { Order } from "@shared/domain/order";
-import type { AppThunkApiConfig } from "@/app/store/store";
+
+import type { AppThunkApiConfig } from "@/app/store";
 
 function getErrorMessage(error: unknown, fallback: string): string {
     if (error instanceof Error && error.message.trim()) {

@@ -1,8 +1,5 @@
-import type {
-    CooperationDTO,
-    CooperationLeadDTO,
-} from "@shared/contracts/cooperation/cooperation.dto";
 import { CooperationStatus } from "@shared/domain/cooperation";
+import type { CooperationDTO, CooperationLeadDTO } from "@shared/contracts/cooperation";
 
 export interface CooperationRepository {
     createCooperation(payload: CooperationLeadDTO): Promise<CooperationDTO>;

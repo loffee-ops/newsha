@@ -1,7 +1,10 @@
-import { store } from "@/app/store/store";
+import { store } from "@/app/store";
+
 import { UnauthorizedError } from "@/app/http/errors";
-import { addResponseInterceptor } from "./interceptor-registry";
+
 import { clearAuth } from "@/features/auth/model";
+
+import { addResponseInterceptor } from "./interceptor-registry";
 
 let teardown: (() => void) | null = null;
 

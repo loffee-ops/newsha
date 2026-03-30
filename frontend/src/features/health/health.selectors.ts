@@ -1,6 +1,6 @@
 import { createSelector } from "@reduxjs/toolkit";
 
-import type { RootState } from "@/app/store/store";
+import type { RootState } from "@/app/store";
 
 const selectHealthState = (state: RootState) => state.health;
 

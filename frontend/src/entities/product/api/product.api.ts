@@ -1,11 +1,11 @@
+import type { PaginatedResponse } from "@shared/contracts/pagination";
+import type { Slug } from "@shared/primitives";
 import type {
     CreateProductDTO,
     ProductDTO,
     ProductFiltersDTO,
     ProductsQuery,
 } from "@shared/contracts/product";
-import type { PaginatedResponse } from "@shared/contracts/pagination";
-import type { Slug } from "@shared/primitives";
 
 const BASE = "/api/products";
 

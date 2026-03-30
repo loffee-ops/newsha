@@ -1,7 +1,8 @@
 import type { AuthResponseDTO, LoginDTO, RegisterDTO } from "@shared/contracts/auth";
 import type { AuthSession } from "@shared/domain/auth";
 
-import { authApi, ApiError } from "../api/auth.api";
+import { authApi, ApiError } from "@/entities/auth/api";
+
 import type { AuthRepository } from "./auth.repository";
 
 function toAuthSession(data: AuthResponseDTO): AuthSession {

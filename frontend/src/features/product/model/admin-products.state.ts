@@ -1,5 +1,6 @@
-import type { AsyncStatus } from "@/shared/config";
 import type { StoreProduct, StoreProductPreview } from "@/entities/product/types";
+
+import type { AsyncStatus } from "@/shared/config";
 
 export interface AdminProductsState {
     items: StoreProductPreview[];

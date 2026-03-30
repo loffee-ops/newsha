@@ -1,13 +1,12 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { useAppDispatch, useAppSelector } from "@/app/store";
-
 import { USER_ROLES } from "@shared/domain/user";
 
-import { closeAuthModal, selectIsAuthenticated, selectUserRole } from "@/features/auth/model";
-
+import { useAppDispatch, useAppSelector } from "@/app/store";
 import { ROUTES } from "@/app/navigation/config";
+
+import { closeAuthModal, selectIsAuthenticated, selectUserRole } from "@/features/auth/model";
 
 type RedirectLocationState = {
     from?: {

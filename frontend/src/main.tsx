@@ -1,6 +1,7 @@
 import ReactDOM from "react-dom/client";
 
 import { AppProviders } from "@/app/providers/AppProvider";
+
 import App from "./App";
 
 const rootElement = document.getElementById("root");

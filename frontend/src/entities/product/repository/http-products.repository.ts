@@ -7,7 +7,8 @@ import type {
 import type { PaginatedResponse } from "@shared/contracts/pagination";
 import type { Slug } from "@shared/primitives";
 
-import { productsApi } from "../api";
+import { productsApi } from "@/entities/product/api";
+
 import type { ProductsRepository } from "./products.repository";
 
 export class HttpProductsRepository implements ProductsRepository {

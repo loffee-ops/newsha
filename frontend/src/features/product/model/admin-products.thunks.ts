@@ -2,15 +2,17 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import type { CreateProductDTO } from "@shared/contracts/product";
 import type { ID } from "@shared/primitives";
-import type { AppThunkApiConfig } from "@/app/store/store";
+
+import type { AppThunkApiConfig } from "@/app/store";
 
 import type {
     AdminProductsQuery,
     SetAdminProductActivePayload,
     SetAdminProductFlagsPayload,
     UpdateAdminProductPayload,
+    StoreProduct,
+    StoreProductPreview,
 } from "@/entities/product/types";
-import type { StoreProduct, StoreProductPreview } from "@/entities/product/types";
 import {
     dtoToProduct,
     dtoToProductPreview,

@@ -1,4 +1,4 @@
-import type { ChangePasswordDTO, UpdateProfileDTO } from "@shared/contracts/user/user.dto";
+import type { ChangePasswordDTO, UpdateProfileDTO } from "@shared/contracts/user";
 
 import type { OkResponseDTO, UserResponseDTO } from "@/entities/user/types";
 

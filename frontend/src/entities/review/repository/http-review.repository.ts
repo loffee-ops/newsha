@@ -2,7 +2,8 @@ import type { CreateReviewDTO } from "@shared/contracts/review/review.dto";
 import type { Review } from "@shared/domain/review";
 import type { ID } from "@shared/primitives";
 
-import { reviewApi } from "../api/review.api";
+import { reviewApi } from "@/entities/review/api";
+
 import type { ReviewRepository } from "./review.repository";
 
 export class HttpReviewRepository implements ReviewRepository {

@@ -1,7 +1,7 @@
+import type { UTM } from "@shared/domain/analytics";
+
 import { STORAGE_KEYS } from "@/shared/config";
 import { getFromStorage, saveToStorage } from "@/shared/lib/storage";
-
-import type { UTM } from "@shared/domain/analytics";
 
 let cached: UTM | undefined;
 

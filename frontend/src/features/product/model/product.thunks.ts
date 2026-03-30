@@ -2,16 +2,17 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import type { ProductsQuery } from "@shared/contracts/product";
 import type { ID, Slug } from "@shared/primitives";
-import type { AppThunkApiConfig } from "@/app/store/store";
+
+import type { AppThunkApiConfig } from "@/app/store";
 
 import type { StoreProduct, StoreProductPreview } from "@/entities/product/types";
+import { PRODUCTS_API_TEXT } from "@/entities/product/config";
 import {
     dtoToProduct,
     dtoToProductPreview,
     toStoreProduct,
     toStorePreview,
 } from "@/entities/product/mapper";
-import { PRODUCTS_API_TEXT } from "@/entities/product/config";
 
 type FetchProductsResult = {
     items: StoreProductPreview[];

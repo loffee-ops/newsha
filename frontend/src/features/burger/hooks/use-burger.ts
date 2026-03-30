@@ -1,6 +1,8 @@
 import { useCallback } from "react";
 
-import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
+import { useAppDispatch, useAppSelector } from "@/app/store";
+
+import type { BurgerSection } from "@/features/burger/config";
 import {
     selectIsBurgerOpen,
     selectBurgerExpanded,
@@ -9,8 +11,6 @@ import {
     toggleBurger,
     toggleExpanded,
 } from "@/features/burger/model";
-
-import type { BurgerSection } from "../config";
 
 export function useBurger() {
     const dispatch = useAppDispatch();

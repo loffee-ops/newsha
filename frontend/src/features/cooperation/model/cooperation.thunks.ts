@@ -1,11 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import type { CooperationLeadDTO } from "@shared/contracts/cooperation";
-import type { CooperationDTO } from "@shared/contracts/cooperation/cooperation.dto";
+import type { CooperationLeadDTO, CooperationDTO } from "@shared/contracts/cooperation";
 import type { CooperationStatus } from "@shared/domain/cooperation";
 import type { ID } from "@shared/primitives";
 
-import type { AppThunkApiConfig } from "@/app/store/store";
+import type { AppThunkApiConfig } from "@/app/store";
 
 function getErrorMessage(error: unknown, fallback: string): string {
     if (error instanceof Error && error.message.trim()) {

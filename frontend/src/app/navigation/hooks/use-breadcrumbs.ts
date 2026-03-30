@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 import { useLocation, useParams } from "react-router-dom";
 
-import { buildBreadcrumbs } from "@/app/navigation/lib";
 import { buildBreadcrumbsSchema } from "@shared/domain/breadcrumb";
-
 import type { BreadcrumbCategory, BreadcrumbProduct } from "@shared/domain/breadcrumb";
+
+import { buildBreadcrumbs } from "@/app/navigation/lib";
 
 type UseBreadcrumbsParams = {
     product?: BreadcrumbProduct;

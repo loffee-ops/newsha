@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import type { Order } from "@shared/domain/order";
+
 import type { AsyncStatus } from "@/shared/config";
 
 import { submitCheckout } from "./checkout.thunks";

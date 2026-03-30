@@ -1,4 +1,4 @@
-import type { RootState } from "@/app/store/store";
+import type { RootState } from "@/app/store";
 
 export const selectConsultations = (state: RootState) => state.consultation.items;
 export const selectConsultationsStatus = (state: RootState) => state.consultation.status;

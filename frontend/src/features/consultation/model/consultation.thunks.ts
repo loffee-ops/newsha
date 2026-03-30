@@ -4,8 +4,9 @@ import type {
     ConsultationDTO,
     ConsultationStatus,
     CreateConsultationDTO,
-} from "@shared/contracts/consultation/consultation.dto";
-import type { AppThunkApiConfig } from "@/app/store/store";
+} from "@shared/contracts/consultation";
+
+import type { AppThunkApiConfig } from "@/app/store";
 
 function getErrorMessage(error: unknown, fallback: string): string {
     if (error instanceof Error && error.message.trim()) {

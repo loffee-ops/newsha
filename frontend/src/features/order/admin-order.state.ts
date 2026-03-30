@@ -1,5 +1,6 @@
+import type { StoreOrder } from "@/entities/order/types";
+
 import type { AsyncStatus } from "@/shared/config";
-import type { StoreOrder } from "@/entities/order/types/order.store.types";
 
 export interface AdminOrderState {
     items: StoreOrder[];

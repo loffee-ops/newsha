@@ -1,11 +1,11 @@
 import { useCallback } from "react";
 
-import { useAppDispatch } from "@/app/store/hooks";
-
-import { addToCart, removeFromCart, clearCart } from "@/features/cart/model";
-
 import type { AddToCartDTO, RemoveFromCartDTO } from "@shared/contracts/cart";
 import type { CartRow } from "@shared/domain/cart";
+
+import { useAppDispatch } from "@/app/store";
+
+import { addToCart, removeFromCart, clearCart } from "@/features/cart/model";
 
 export function useCartActions() {
     const dispatch = useAppDispatch();

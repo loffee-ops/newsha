@@ -4,8 +4,9 @@ import type { FormikHelpers } from "formik";
 import { useAppDispatch, useAppSelector } from "@/app/store";
 
 import { register, selectAuthState } from "@/features/auth/model";
+import type { RegisterFormValues } from "@/features/auth/schema";
+
 import { useRedirectAfterLogin } from "./use-redirect-after-login";
-import type { RegisterFormValues } from "@/features/auth/schema/register-form.schema";
 
 export function useRegisterForm() {
     const dispatch = useAppDispatch();

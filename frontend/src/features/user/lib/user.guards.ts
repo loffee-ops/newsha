@@ -1,5 +1,4 @@
 import type { ID } from "@shared/primitives";
-
 import type { User, CurrentUser } from "@shared/domain/user";
 import {
     ensureAdminDomain,

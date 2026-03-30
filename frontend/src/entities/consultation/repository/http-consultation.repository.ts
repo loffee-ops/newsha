@@ -4,7 +4,8 @@ import type {
     CreateConsultationDTO,
 } from "@shared/contracts/consultation/consultation.dto";
 
-import { consultationApi } from "../api/consultation.api";
+import { consultationApi } from "@/entities/consultation/api";
+
 import type { ConsultationRepository } from "./consultation.repository";
 
 export class HttpConsultationRepository implements ConsultationRepository {

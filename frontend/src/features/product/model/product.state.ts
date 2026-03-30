@@ -1,6 +1,8 @@
 import type { PaginatedResponse } from "@shared/contracts/pagination";
-import type { AsyncStatus } from "@/shared/config";
+
 import type { StoreProduct, StoreProductPreview } from "@/entities/product/types";
+
+import type { AsyncStatus } from "@/shared/config";
 
 export type ProductListMeta = PaginatedResponse<unknown>["meta"] | null;
 

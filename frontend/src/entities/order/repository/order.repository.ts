@@ -1,7 +1,7 @@
 import type { CheckoutDTO } from "@shared/contracts/checkout";
+import type { Order } from "@shared/domain/order";
 
 import type { OrdersQuery, PaginatedOrdersDTO } from "@/entities/order/types";
-import type { Order } from "@shared/domain/order";
 
 export interface OrderRepository {
     checkout(payload: CheckoutDTO): Promise<Order>;

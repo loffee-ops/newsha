@@ -1,6 +1,7 @@
 import type { RouteObject } from "react-router-dom";
 
 import { AppLayout } from "@/app/layout/AppLayout";
+
 import { CheckoutPage, CheckoutSuccessPage } from "@/pages";
 
 export const checkoutRoutes: RouteObject = {

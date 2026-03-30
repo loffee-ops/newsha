@@ -1,6 +1,8 @@
 import { useCallback } from "react";
 
-import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
+import type { ID } from "@shared/primitives";
+
+import { useAppDispatch, useAppSelector } from "@/app/store";
 
 import { openLoginModal, selectIsAuthenticated } from "@/features/auth/model";
 import {
@@ -9,8 +11,6 @@ import {
     selectWishlistError,
     toggleWishlistItem,
 } from "@/features/wishlist/model";
-
-import type { ID } from "@shared/primitives";
 
 export function useWishlist() {
     const dispatch = useAppDispatch();

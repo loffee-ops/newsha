@@ -3,6 +3,7 @@ import * as Yup from "yup";
 import type { LoginDTO } from "@shared/contracts/auth";
 
 import type { FormSchema } from "@/shared/lib/forms";
+
 import { LOGIN_FORM_TEXT as TEXT, LOGIN_VALIDATION_TEXT as T } from "@/features/auth/config";
 
 export type LoginFormValues = LoginDTO;

@@ -1,6 +1,7 @@
 import type { ID } from "@shared/primitives";
 
-import { wishlistApi } from "../api/wishlist.api";
+import { wishlistApi } from "@/entities/wishlist/api";
+
 import type { WishlistRepository } from "./wishlist.repository";
 
 export class HttpWishlistRepository implements WishlistRepository {

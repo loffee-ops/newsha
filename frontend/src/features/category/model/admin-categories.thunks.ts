@@ -2,7 +2,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import type { CategoryDTO } from "@shared/contracts/category";
 import type { ID } from "@shared/primitives";
-import type { AppThunkApiConfig } from "@/app/store/store";
+
+import type { AppThunkApiConfig } from "@/app/store";
 
 import type {
     AdminCategoryListResponse,

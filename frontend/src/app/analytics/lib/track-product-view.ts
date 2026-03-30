@@ -1,6 +1,6 @@
 import type { Product } from "@/entities/product/types";
-
 import { analytics } from "@/entities/analytics/api";
+
 import { fireOnce } from "./event-guards";
 
 export function trackProductView(product: Product): void {

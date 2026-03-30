@@ -1,8 +1,8 @@
 import type { Review, ReviewStatus } from "@shared/domain/review";
 import type { ID } from "@shared/primitives";
 
-import { adminReviewsApi } from "../api/admin-reviews.api";
 import type { AdminPaginatedReviewsDTO, AdminReviewsQuery } from "@/entities/review/types";
+import { adminReviewsApi } from "@/entities/review/api";
 
 import type { AdminReviewRepository } from "./admin-review.repository";
 

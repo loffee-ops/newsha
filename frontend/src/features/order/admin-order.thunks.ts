@@ -2,10 +2,10 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import type { ID } from "@shared/primitives";
 import type { OrderStatus } from "@shared/domain/order";
-import type { AppThunkApiConfig } from "@/app/store/store";
 
-import type { AdminOrdersQuery } from "@/entities/order/types";
-import type { StoreOrder } from "@/entities/order/types/order.store.types";
+import type { AppThunkApiConfig } from "@/app/store";
+
+import type { AdminOrdersQuery, StoreOrder } from "@/entities/order/types";
 import { toStoreOrder, toStoreOrders } from "@/entities/order/mapper";
 
 type FetchAdminOrdersResult = {

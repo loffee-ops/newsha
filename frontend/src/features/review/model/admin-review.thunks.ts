@@ -4,7 +4,8 @@ import type { PaginationMetaDTO } from "@shared/contracts/pagination";
 import type { Review, ReviewStatus } from "@shared/domain/review";
 import type { ID } from "@shared/primitives";
 
-import type { AppThunkApiConfig } from "@/app/store/store";
+import type { AppThunkApiConfig } from "@/app/store";
+
 import type { AdminReviewsQuery } from "@/entities/review/types";
 
 type FetchAdminReviewsResult = {

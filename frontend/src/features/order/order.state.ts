@@ -1,6 +1,8 @@
 import type { PaginationMetaDTO } from "@shared/contracts/pagination";
+
 import type { AsyncStatus } from "@/shared/config";
-import type { StoreOrder } from "@/entities/order/types/order.store.types";
+
+import type { StoreOrder } from "@/entities/order/types";
 
 export type PaginatedOrders = {
     data: StoreOrder[];

@@ -1,4 +1,5 @@
 import type { ID } from "@shared/primitives";
+
 import { HttpWishlistRepository } from "@/entities/wishlist/repository";
 
 export function createWishlistService() {

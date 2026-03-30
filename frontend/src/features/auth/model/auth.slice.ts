@@ -2,9 +2,11 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 import type { AuthSession } from "@shared/domain/auth";
 import type { User } from "@shared/domain/user";
+
 import type { AsyncStatus } from "@/shared/config";
 
 import { AUTH_TEXT } from "@/features/auth/config";
+
 import { restoreSession, login, register, logout, loginWithGoogle } from "./auth.thunks";
 
 export interface AuthState {

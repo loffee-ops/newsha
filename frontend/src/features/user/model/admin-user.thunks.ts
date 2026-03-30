@@ -3,7 +3,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import type { User, UserRole } from "@shared/domain/user";
 import type { ID } from "@shared/primitives";
 
-import type { AppThunkApiConfig } from "@/app/store/store";
+import type { AppThunkApiConfig } from "@/app/store";
+
 import type { AdminUsersQuery } from "@/entities/user/types";
 
 type FetchAdminUsersResult = {

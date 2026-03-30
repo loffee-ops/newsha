@@ -1,1 +1,1 @@
-export { authApi } from "./auth.api";
+export { authApi, ApiError } from "./auth.api";

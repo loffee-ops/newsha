@@ -1,10 +1,8 @@
-import type {
-    CooperationDTO,
-    CooperationLeadDTO,
-} from "@shared/contracts/cooperation/cooperation.dto";
 import { CooperationStatus } from "@shared/domain/cooperation";
+import type { CooperationDTO, CooperationLeadDTO } from "@shared/contracts/cooperation";
 
-import { cooperationApi } from "../api/cooperation.api";
+import { cooperationApi } from "@/entities/cooperation/api";
+
 import type { CooperationRepository } from "./cooperation.repository";
 
 export class HttpCooperationRepository implements CooperationRepository {

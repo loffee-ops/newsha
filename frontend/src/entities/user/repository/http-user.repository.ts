@@ -1,7 +1,8 @@
-import type { ChangePasswordDTO, UpdateProfileDTO } from "@shared/contracts/user/user.dto";
+import type { ChangePasswordDTO, UpdateProfileDTO } from "@shared/contracts/user";
 import type { User } from "@shared/domain/user";
 
-import { userApi } from "../api/user.api";
+import { userApi } from "@/entities/user/api";
+
 import type { UserRepository } from "./user.repository";
 
 export class HttpUserRepository implements UserRepository {

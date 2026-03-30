@@ -1,6 +1,6 @@
 import type { Order, OrderItem } from "@shared/domain/order";
 
-import type { StoreOrder, StoreOrderItem } from "@/entities/order/types/order.store.types";
+import type { StoreOrder, StoreOrderItem } from "@/entities/order/types";
 
 function toStoreOrderItem(item: OrderItem): StoreOrderItem {
     return {

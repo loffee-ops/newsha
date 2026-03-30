@@ -1,6 +1,6 @@
-import type { Product, ProductPreview } from "@/entities/product/types";
-
 import { asMoney } from "@shared/primitives";
+
+import type { Product, ProductPreview } from "@/entities/product/types";
 
 export function toProductPreviewUI(p: Product): ProductPreview {
     const primaryImage =

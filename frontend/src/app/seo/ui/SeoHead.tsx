@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 
 import type { SeoMeta } from "@/app/seo/types";
-
 import { buildOpenGraph } from "@/app/seo/builders";
 import { setMeta, setLink } from "@/app/seo/lib";
 

@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import type { ConsultationDTO } from "@shared/contracts/consultation/consultation.dto";
+import type { ConsultationDTO } from "@shared/contracts/consultation";
+
 import type { AsyncStatus } from "@/shared/config";
 
 import {

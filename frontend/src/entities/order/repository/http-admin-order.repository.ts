@@ -1,7 +1,8 @@
 import type { Order, OrderStatus } from "@shared/domain/order";
 import type { ID } from "@shared/primitives";
-import { adminOrdersApi } from "../api";
+
 import type { AdminOrdersQuery, AdminPaginatedOrdersDTO } from "@/entities/order/types";
+import { adminOrdersApi } from "@/entities/order/api";
 
 import type { AdminOrderRepository } from "./admin-order.repository";
 

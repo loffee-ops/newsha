@@ -1,5 +1,3 @@
-import { client } from "@/app/analytics/core";
-
 import {
     ANALYTICS_EVENTS,
     type AddToCartParams,
@@ -8,6 +6,8 @@ import {
     type PurchaseParams,
     type ViewProductParams,
 } from "@shared/domain/analytics";
+
+import { client } from "@/app/analytics/core";
 
 function isPlainObject(value: unknown): value is Record<string, unknown> {
     return typeof value === "object" && value !== null && !Array.isArray(value);

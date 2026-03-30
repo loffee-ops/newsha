@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import type { AppThunkApiConfig } from "@/app/store/store";
+import type { AppThunkApiConfig } from "@/app/store";
+
 import type {
     AdminBannerListResponse,
     AdminBannerResponse,

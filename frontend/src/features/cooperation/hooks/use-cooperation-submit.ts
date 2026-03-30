@@ -1,8 +1,8 @@
 import { useCallback } from "react";
 
-import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
-
 import type { CooperationLeadDTO } from "@shared/contracts/cooperation";
+
+import { useAppDispatch, useAppSelector } from "@/app/store";
 
 import {
     submitCooperation,

@@ -1,4 +1,5 @@
 import type { User } from "@shared/domain/user";
+
 import type { AsyncStatus } from "@/shared/config";
 
 export interface AdminUserState {

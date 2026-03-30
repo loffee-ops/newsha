@@ -1,10 +1,10 @@
 import type { ReactNode } from "react";
 import { useEffect } from "react";
 
+import { showToast } from "@design-system/ui/Toast/model";
+
 import { useAnalytics } from "@/app/analytics/hooks";
 import { logger } from "@/app/error/model";
-
-import { showToast } from "@design-system/ui/Toast/model";
 
 type Props = {
     children: ReactNode;

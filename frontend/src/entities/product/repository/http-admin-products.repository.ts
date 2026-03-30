@@ -1,7 +1,6 @@
 import type { CreateProductDTO, ProductDTO } from "@shared/contracts/product";
 import type { ID } from "@shared/primitives";
 
-import { adminProductsApi } from "../api/admin-products.api";
 import type {
     AdminPaginatedProductsDTO,
     AdminProductsQuery,
@@ -9,6 +8,8 @@ import type {
     SetAdminProductFlagsPayload,
     UpdateAdminProductPayload,
 } from "@/entities/product/types";
+import { adminProductsApi } from "@/entities/product/api";
+
 import type { AdminProductsRepository } from "./admin-products.repository";
 
 export class HttpAdminProductsRepository implements AdminProductsRepository {

@@ -1,7 +1,8 @@
 import type { RouteObject } from "react-router-dom";
 
-import { ErrorPage, MaintenancePage, NotFoundPage, ServerErrorPage } from "@/pages";
 import { ROUTES } from "@/app/navigation/config";
+
+import { ErrorPage, MaintenancePage, NotFoundPage, ServerErrorPage } from "@/pages";
 
 export const systemRoutes: RouteObject[] = [
     {

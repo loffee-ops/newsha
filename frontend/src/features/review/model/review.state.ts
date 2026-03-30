@@ -1,4 +1,5 @@
 import type { Review } from "@shared/domain/review";
+
 import type { AsyncStatus } from "@/shared/config";
 
 export interface ReviewState {

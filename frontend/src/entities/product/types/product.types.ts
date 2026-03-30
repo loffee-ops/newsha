@@ -1,13 +1,13 @@
-import type { SEO } from "@/app/seo/types";
-
 import type { ProductDTO, ProductPreviewDTO } from "@shared/contracts/product";
+import type { ReviewStats } from "@shared/domain/review";
 import type {
     ProductUnit,
     ProductVolumeVariant,
     GalleryImage,
     GalleryVideo,
 } from "@shared/domain/product";
-import type { ReviewStats } from "@shared/domain/review";
+
+import type { SEO } from "@/app/seo/types";
 
 export type ProductGalleryItem = GalleryImage | GalleryVideo;
 

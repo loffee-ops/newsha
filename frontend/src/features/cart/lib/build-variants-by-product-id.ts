@@ -1,10 +1,10 @@
 import type { ID } from "@shared/primitives";
+
 import type {
     ProductVolumeOption,
     StoreProduct,
     StoreProductPreview,
 } from "@/entities/product/types";
-
 import type { CartVariantMeta, CartVariantMetaMap } from "@/entities/cart/mappers";
 
 type ProductWithVariants = Pick<StoreProductPreview | StoreProduct, "id" | "volumes">;

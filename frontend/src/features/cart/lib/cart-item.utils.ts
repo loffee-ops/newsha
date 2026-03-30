@@ -1,5 +1,6 @@
-import type { CartItem } from "@/entities/cart/types";
 import { asQuantity, calcSubtotal } from "@shared/primitives";
+
+import type { CartItem } from "@/entities/cart/types";
 
 export const getIncreaseItem = (item: CartItem): CartItem => {
     const nextQty = asQuantity(Number(item.qty) + 1);

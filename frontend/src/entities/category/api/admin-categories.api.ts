@@ -7,7 +7,7 @@ import type {
     CreateCategoryPayload,
     SetCategoryActivePayload,
     UpdateCategoryPayload,
-} from "@/entities/category/types/admin-category.api.types";
+} from "@/entities/category/types";
 
 const BASE = "/api/admin/categories";
 

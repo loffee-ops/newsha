@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import type { CategoryDTO } from "@shared/contracts/category";
+
 import type { AsyncStatus } from "@/shared/config";
 
 import { fetchCategories } from "./category.thunks";

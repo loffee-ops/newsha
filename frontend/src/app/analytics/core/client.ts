@@ -1,9 +1,11 @@
+import type { AnalyticsEvent, UTM } from "@shared/domain/analytics";
+
 import type { AnalyticsSDK } from "@/entities/analytics/types";
-import { getSessionId, getUTM } from "@/app/analytics/lib";
-import { CONSTANTS } from "@/shared/config";
 import { analyticsApi } from "@/entities/analytics/api";
 
-import type { AnalyticsEvent, UTM } from "@shared/domain/analytics";
+import { getSessionId, getUTM } from "@/app/analytics/lib";
+
+import { CONSTANTS } from "@/shared/config";
 
 const ANALYTICS_CURRENCY = CONSTANTS.CURRENCY.CODE;
 

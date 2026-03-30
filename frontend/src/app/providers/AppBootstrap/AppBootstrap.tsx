@@ -1,10 +1,11 @@
 import type { ReactNode } from "react";
 import { useEffect } from "react";
 
-import { initializeApp } from "@/app/store/initialize-app";
-import { useAppDispatch, useAppSelector, selectAppStatus, selectIsAppBooting } from "@/app/store";
 import { AppLoader } from "@design-system/ui/AppLoader";
 import { ErrorFallback } from "@design-system/ui/ErrorFallback";
+
+import { initializeApp } from "@/app/store";
+import { useAppDispatch, useAppSelector, selectAppStatus, selectIsAppBooting } from "@/app/store";
 
 type AppBootstrapProps = {
     children: ReactNode;

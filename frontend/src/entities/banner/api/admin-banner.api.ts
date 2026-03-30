@@ -1,4 +1,3 @@
-import { http } from "@/app/http";
 import type {
     AdminBannerListResponse,
     AdminBannerResponse,
@@ -6,6 +5,8 @@ import type {
     UpdateBannerPayload,
     UploadBannerPayload,
 } from "@/entities/banner/types";
+
+import { http } from "@/app/http";
 
 export const adminBannerApi = {
     async getAll(params?: { page?: number; limit?: number }): Promise<AdminBannerListResponse> {

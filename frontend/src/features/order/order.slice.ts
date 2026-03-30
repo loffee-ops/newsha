@@ -2,9 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { DEFAULT_LIMIT, DEFAULT_PAGE } from "@shared/lib/pagination";
 
+import { toStoreOrders } from "@/entities/order/mapper";
+
 import type { OrderState } from "./order.state";
 import { fetchMyOrders } from "./order.thunks";
-import { toStoreOrders } from "@/entities/order/mapper";
 
 const initialState: OrderState = {
     current: null,

@@ -1,8 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import type { ChangePasswordDTO, UpdateProfileDTO } from "@shared/contracts/user/user.dto";
+import type { ChangePasswordDTO, UpdateProfileDTO } from "@shared/contracts/user";
 import type { User } from "@shared/domain/user";
-import type { AppThunkApiConfig } from "@/app/store/store";
+
+import type { AppThunkApiConfig } from "@/app/store";
 
 function getErrorMessage(error: unknown, fallback: string): string {
     if (error instanceof Error && error.message.trim()) {

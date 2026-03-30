@@ -1,7 +1,8 @@
-import { ROUTES } from "@/app/navigation/config";
 import { useTheme } from "styled-components";
 
 import type { AppTheme } from "@design-system/theme";
+
+import { ROUTES } from "@/app/navigation/config";
 
 import { LogoImage, LogoLink, LogoSubtitle, LogoTextGroup } from "./Logo.styled";
 

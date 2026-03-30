@@ -4,6 +4,7 @@ import { USER_ROLES } from "@shared/domain/user";
 import type { UserRole } from "@shared/domain/user";
 
 import { useAppSelector } from "@/app/store";
+
 import { selectIsAdmin, selectIsAuthenticated, selectUserRole } from "@/features/auth/model";
 
 export function usePermissions() {

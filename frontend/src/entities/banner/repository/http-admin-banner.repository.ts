@@ -1,5 +1,3 @@
-import { adminBannerApi } from "../api/admin-banner.api";
-import type { AdminBannerRepository } from "./admin-banner.repository";
 import type {
     AdminBannerListResponse,
     AdminBannerResponse,
@@ -7,6 +5,10 @@ import type {
     UpdateBannerPayload,
     UploadBannerPayload,
 } from "@/entities/banner/types";
+
+import { adminBannerApi } from "@/entities/banner/api";
+
+import type { AdminBannerRepository } from "./admin-banner.repository";
 
 export class HttpAdminBannerRepository implements AdminBannerRepository {
     getAll(params?: { page?: number; limit?: number }): Promise<AdminBannerListResponse> {

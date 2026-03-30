@@ -1,10 +1,13 @@
 import { createSelector } from "@reduxjs/toolkit";
 
-import type { RootState } from "@/app/store";
 import type { CartRow } from "@shared/domain/cart";
-import type { CartViewItemDetailed } from "@/entities/cart/types";
-import { selectProductPreviews } from "@/features/product/model/product.selectors";
 import { asQuantity, asSubtotal, calcSubtotal } from "@shared/primitives";
+
+import type { RootState } from "@/app/store";
+
+import type { CartViewItemDetailed } from "@/entities/cart/types";
+
+import { selectProductPreviews } from "@/features/product/model";
 
 const selectCartState = (state: RootState): RootState["cart"] => state.cart;
 

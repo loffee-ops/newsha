@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 
-import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
+import { useAppDispatch, useAppSelector } from "@/app/store";
 
 import {
     selectConsultationModal,

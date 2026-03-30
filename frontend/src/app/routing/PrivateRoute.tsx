@@ -1,8 +1,9 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
+import { AppLoader } from "@design-system/ui/AppLoader";
+
 import { useAppSelector } from "@/app/store/hooks";
 import { ROUTES } from "@/app/navigation/config";
-import { AppLoader } from "@design-system/ui/AppLoader";
 
 import { selectIsAuthenticated, selectSessionLoaded } from "@/features/auth/model";
 

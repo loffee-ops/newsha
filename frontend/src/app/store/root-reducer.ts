@@ -3,31 +3,30 @@ import { combineReducers } from "@reduxjs/toolkit";
 import { appReducer } from "./app.slice";
 
 import { adminUserReducer } from "@/features/user/model";
-import { adminCategoriesReducer } from "@/features/category/model/admin-categories.slice";
-import { adminProductsReducer } from "@/features/product/model/admin-products.slice";
-import { adminBannerReducer } from "@/features/banner/model/admin-banner.slice";
-import { adminOrderReducer } from "@/features/order/admin-order.slice";
-import { adminReviewReducer } from "@/features/review/model/admin-review.slice";
+import { adminCategoriesReducer } from "@/features/category/model";
+import { adminProductsReducer } from "@/features/product/model";
+import { adminBannerReducer } from "@/features/banner/model";
+import { adminOrderReducer } from "@/features/order";
+import { adminReviewReducer } from "@/features/review/model";
 
 import { analyticsReducer } from "@/features/analytics";
-import { authReducer } from "@/features/auth/model/auth.slice";
-import { authUIReducer } from "@/features/auth/model/auth-ui.slice";
+import { authReducer, authUIReducer } from "@/features/auth/model";
 import { userReducer } from "@/features/user/model";
 import { burgerReducer } from "@/features/burger/model";
-import { healthReducer } from "@/features/health/health.slice";
+import { healthReducer } from "@/features/health";
 import { categoryReducer } from "@/features/category/model";
-import { productReducer } from "@/features/product/model/product.slice";
+import { productReducer } from "@/features/product/model";
 import { bannerReducer } from "@/features/banner/model";
 import { cartReducer, cartUIReducer } from "@/features/cart/model";
-import { checkoutReducer } from "@/features/checkout/model/checkout.slice";
+import { checkoutReducer } from "@/features/checkout/model";
 import { orderReducer } from "@/features/order";
 import { wishlistReducer } from "@/features/wishlist/model";
-import { recentlyViewedReducer } from "@/features/recently-viewed/recently-viewed.slice";
-import { consultationReducer } from "@/features/consultation/model/consultation.slice";
+import { recentlyViewedReducer } from "@/features/recently-viewed";
+import { consultationReducer } from "@/features/consultation/model";
 import { consultationUIReducer } from "@/features/consultation/model";
 import { cooperationReducer } from "@/features/cooperation/model";
-import { reviewReducer } from "@/features/review/model/review.slice";
-import { searchReducer } from "@/features/search/search.slice";
+import { reviewReducer } from "@/features/review/model";
+import { searchReducer } from "@/features/search";
 
 export const rootReducer = combineReducers({
     app: appReducer,

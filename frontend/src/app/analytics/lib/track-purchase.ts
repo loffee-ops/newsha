@@ -1,7 +1,7 @@
-import { analytics } from "@/entities/analytics/api";
-
 import type { PurchaseParams } from "@shared/domain/analytics";
 import type { Order } from "@shared/domain/order";
+
+import { analytics } from "@/entities/analytics/api";
 
 function toPurchaseParams(order: Order): PurchaseParams {
     return {

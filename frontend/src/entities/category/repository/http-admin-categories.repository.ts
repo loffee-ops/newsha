@@ -1,13 +1,14 @@
 import type { CategoryDTO } from "@shared/contracts/category";
 import type { ID } from "@shared/primitives";
 
-import { adminCategoriesApi } from "../api/admin-categories.api";
+import { adminCategoriesApi } from "@/entities/category/api";
 import type {
     AdminCategoryListResponse,
     CreateCategoryPayload,
     SetCategoryActivePayload,
     UpdateCategoryPayload,
 } from "@/entities/category/types";
+
 import type { AdminCategoriesRepository } from "./admin-categories.repository";
 
 export class HttpAdminCategoriesRepository implements AdminCategoriesRepository {

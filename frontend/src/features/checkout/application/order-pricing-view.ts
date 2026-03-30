@@ -1,8 +1,9 @@
 import type { Coupon } from "@shared/domain/discount";
+import { calculateOrderPricing } from "@shared/domain/order";
 
 import type { CartViewItemDetailed } from "@/entities/cart/types";
+
 import { mapCartViewToPricing } from "./map-cart-view-to-pricing";
-import { calculateOrderPricing } from "@shared/domain/order";
 
 export type OrderPricingView = {
     subtotal: number;

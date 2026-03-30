@@ -1,6 +1,5 @@
-import type { Product } from "@/entities/product/types/product.types";
-import { NEED_KEYWORD_TO_SLUG } from "@/entities/product/config";
-import { CONDITION_KEYWORD_TO_SLUG } from "@/entities/product/config/condition.keywords";
+import type { Product } from "@/entities/product/types";
+import { NEED_KEYWORD_TO_SLUG, CONDITION_KEYWORD_TO_SLUG } from "@/entities/product/config";
 
 import { normalizeText, matchesKeyword } from "@/shared/lib/search";
 

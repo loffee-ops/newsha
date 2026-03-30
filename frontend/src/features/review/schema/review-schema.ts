@@ -1,7 +1,8 @@
 import { REVIEW_CONFIG } from "@/features/review/config";
-import type { ReviewFormValues } from "./review-form.types";
 
 import type { FormSchema } from "@/shared/lib/forms";
+
+import type { ReviewFormValues } from "./review-form.types";
 
 export const reviewForm: FormSchema<ReviewFormValues> = {
     title: REVIEW_CONFIG.FORM_TITLE,

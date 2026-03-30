@@ -1,7 +1,8 @@
 import type { CategoryDTO } from "@shared/contracts/category";
 import type { Slug } from "@shared/primitives";
 
-import { categoriesApi } from "../api/categories.api";
+import { categoriesApi } from "@/entities/category/api";
+
 import type { CategoriesRepository } from "./categories.repository";
 
 export class HttpCategoriesRepository implements CategoriesRepository {

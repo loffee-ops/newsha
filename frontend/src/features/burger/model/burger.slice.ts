@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-import type { BurgerSection } from "../config";
+import type { BurgerSection } from "@/features/burger/config";
 
 export interface BurgerState {
     open: boolean;

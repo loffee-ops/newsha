@@ -3,6 +3,7 @@ import * as Yup from "yup";
 import type { RegisterDTO } from "@shared/contracts/auth";
 
 import type { FormSchema } from "@/shared/lib/forms";
+
 import { REGISTER_FORM_TEXT as TEXT, REGISTER_VALIDATION_TEXT as T } from "@/features/auth/config";
 
 export type RegisterFormValues = RegisterDTO & {

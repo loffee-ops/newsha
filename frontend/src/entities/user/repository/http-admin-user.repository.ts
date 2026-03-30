@@ -3,6 +3,7 @@ import type { ID } from "@shared/primitives";
 
 import { type AdminPaginatedUsersDTO, type AdminUsersQuery } from "@/entities/user/types";
 import { adminUsersApi } from "@/entities/user/api";
+
 import type { AdminUserRepository } from "./admin-user.repository";
 
 export class HttpAdminUserRepository implements AdminUserRepository {

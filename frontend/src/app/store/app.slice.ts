@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { initializeApp } from "./initialize-app";
-
 import { AppStatus } from "@/shared/config";
+
+import { initializeApp } from "./initialize-app";
 
 export interface AppState {
     status: AppStatus;

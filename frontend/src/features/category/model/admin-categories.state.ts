@@ -1,4 +1,5 @@
 import type { CategoryDTO } from "@shared/contracts/category";
+
 import type { AsyncStatus } from "@/shared/config";
 
 export interface AdminCategoriesState {

@@ -1,9 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import type { CreateReviewDTO } from "@shared/contracts/review/review.dto";
+import type { CreateReviewDTO } from "@shared/contracts/review";
 import type { Review } from "@shared/domain/review";
 import type { ID } from "@shared/primitives";
-import type { AppThunkApiConfig } from "@/app/store/store";
+
+import type { AppThunkApiConfig } from "@/app/store";
 
 function getErrorMessage(error: unknown, fallback: string): string {
     if (error instanceof Error && error.message.trim()) {

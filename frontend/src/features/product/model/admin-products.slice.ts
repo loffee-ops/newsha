@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import { toStorePreview } from "@/entities/product/mapper";
+
 import type { AdminProductsState } from "./admin-products.state";
 import {
     createAdminProduct,
@@ -10,7 +12,6 @@ import {
     setAdminProductFlags,
     updateAdminProduct,
 } from "./admin-products.thunks";
-import { toStorePreview } from "@/entities/product/mapper";
 
 const initialState: AdminProductsState = {
     items: [],

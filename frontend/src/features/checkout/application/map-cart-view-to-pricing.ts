@@ -1,5 +1,6 @@
-import type { CartViewItemDetailed } from "@/entities/cart/types";
 import type { PricingOrderItem } from "@shared/domain/order";
+
+import type { CartViewItemDetailed } from "@/entities/cart/types";
 
 export function mapCartViewToPricing(cart: readonly CartViewItemDetailed[]): PricingOrderItem[] {
     return cart.map((item) => ({

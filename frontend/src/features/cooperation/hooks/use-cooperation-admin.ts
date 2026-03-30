@@ -1,9 +1,10 @@
 import { useCallback, useEffect } from "react";
 
-import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
-
 import type { CooperationStatus } from "@shared/domain/cooperation";
 import type { ID } from "@shared/primitives";
+
+import { useAppDispatch, useAppSelector } from "@/app/store";
+
 import {
     fetchCooperations,
     updateCooperationStatus,

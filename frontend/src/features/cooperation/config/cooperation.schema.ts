@@ -1,5 +1,6 @@
-import type { FormSchema } from "@/shared/lib/forms";
 import type { CooperationLeadDTO } from "@shared/contracts/cooperation";
+
+import type { FormSchema } from "@/shared/lib/forms";
 
 import { COOPERATION_TEXT } from "./cooperation.text";
 

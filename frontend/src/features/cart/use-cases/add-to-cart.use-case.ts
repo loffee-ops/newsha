@@ -1,5 +1,6 @@
 import type { CartRow } from "@shared/domain/cart";
 import type { AddToCartDTO } from "@shared/contracts/cart";
+
 import type { CartRepository } from "@/entities/cart/repository";
 
 export async function addToCartUseCase(

@@ -1,7 +1,8 @@
 import type { CheckoutDTO } from "@shared/contracts/checkout";
 import type { Order } from "@shared/domain/order";
 
-import { checkoutApi } from "../api/checkout.api";
+import { checkoutApi } from "@/entities/checkout/api";
+
 import type { CheckoutRepository } from "./checkout.repository";
 
 export class HttpCheckoutRepository implements CheckoutRepository {

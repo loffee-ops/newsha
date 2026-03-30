@@ -1,9 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import type { SearchParamsDTO } from "@shared/contracts/search";
-import type { AppThunkApiConfig } from "@/app/store/store";
-import type { StoreProductPreview } from "@/entities/product/types";
 
+import type { AppThunkApiConfig } from "@/app/store";
+
+import type { StoreProductPreview } from "@/entities/product/types";
 import { dtoToProductPreview, toStorePreview } from "@/entities/product/mapper";
 
 function getErrorMessage(error: unknown, fallback: string): string {

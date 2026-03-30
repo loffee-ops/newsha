@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import type { User } from "@shared/domain/user";
+
 import type { AsyncStatus } from "@/shared/config";
 
 import { changePassword, fetchMe, updateMe } from "./user.thunks";

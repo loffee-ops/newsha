@@ -2,9 +2,10 @@ import { Navigate, Outlet } from "react-router-dom";
 
 import type { UserRole } from "@shared/domain/user";
 
+import { AppLoader } from "@design-system/ui/AppLoader";
+
 import { useAppSelector } from "@/app/store/hooks";
 import { ROUTES } from "@/app/navigation/config";
-import { AppLoader } from "@design-system/ui/AppLoader";
 
 import { selectSessionLoaded, selectUserRole } from "@/features/auth/model";
 
