@@ -2,7 +2,9 @@ node_modules
 **/node_modules
 
 dist
+**/dist
 build
+**/build
 coverage
 **/coverage
 dist-ssr
@@ -30,3 +32,5 @@ lerna-debug.log*
 *.sln
 *.sw?
 *.tsbuildinfo
+
+
