@@ -13,23 +13,22 @@ export const LogoTextGroup = styled.span`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2px;
-    line-height: 1;
-    transform: translateY(2px);
+    gap: 4px;
+    transform: translateY(5px);
 `;
 
 export const LogoImage = styled.img`
     display: block;
     width: auto;
-    height: 20px;
-    object-fit: contain;
+    height: 18px;
+    object-fit: cover;
 `;
 
 export const LogoSubtitle = styled.span`
     display: block;
-    font-size: 10px;
+    font-size: 9px;
     line-height: 1;
-    letter-spacing: 0.27em;
+    letter-spacing: 0.31em;
     text-transform: uppercase;
     color: #111111;
 `;

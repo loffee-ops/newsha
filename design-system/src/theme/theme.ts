@@ -15,6 +15,8 @@ import {
 
 import logoWhite from "../assets/logo/logo_newsha_white.svg";
 import logoBlack from "../assets/logo/logo_newsha.svg";
+import userIcon from "../assets/userUI/user.svg";
+import shoppingBag from "../assets/userUI/bag.svg";
 
 export const mainTheme = {
     fontSizes,
@@ -41,6 +43,8 @@ export const mainTheme = {
             whiteLogo: logoWhite,
             blackLogo: logoBlack,
         },
+        userIcon,
+        shoppingBag,
     },
 };
 

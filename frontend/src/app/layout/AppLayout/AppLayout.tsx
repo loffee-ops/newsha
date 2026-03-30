@@ -4,6 +4,7 @@ import { useBreadcrumbs } from "@/app/navigation/hooks";
 import { JsonLd } from "@/app/seo/ui";
 
 import { PageContainer } from "@design-system/layout";
+import { Header } from "@/widgets/Header";
 
 import { Breadcrumbs } from "@/widgets/Breadcrumbs";
 
@@ -17,6 +18,7 @@ export function AppLayout() {
             <JsonLd data={schema} />
 
             <Content>
+                <Header />
                 <PageContainer>
                     <Breadcrumbs breadcrumbs={breadcrumbs} />
                     <Outlet />
