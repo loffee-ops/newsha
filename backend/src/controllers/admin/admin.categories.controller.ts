@@ -3,12 +3,10 @@ import type { Request, Response } from "express";
 import { CommonErrors } from "@/errors";
 
 import { toCategoryDTO, toCategoryEntity } from "@/mappers/category";
-import { categoryService } from "@/services/categories.service";
-import {
-    validateCategoryId,
-    validateCreateCategory,
-    validateUpdateCategory,
-} from "@/validation/category.validation";
+
+import { categoryService } from "@/services";
+
+import { validateCategoryId, validateCreateCategory, validateUpdateCategory } from "@/validation";
 
 export async function getAllCategoriesAdmin(req: Request, res: Response) {
     const result = await categoryService.getAdminList(req);

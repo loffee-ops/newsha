@@ -1,4 +1,5 @@
 import type { Types } from "mongoose";
+
 import type { BannerPlacement, BannerVariant } from "@shared/domain/banner";
 
 export type BannerPersistence = {

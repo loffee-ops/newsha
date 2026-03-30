@@ -1,11 +1,11 @@
-import { registry } from "../registry";
+import { registry } from "@/docs/openapi";
 
 import {
     CheckoutRequestSchema,
     OrderSchema,
     MyOrdersListResponseSchema,
-} from "../schemas/order.schemas";
-import { ErrorResponseSchema } from "../schemas/responses.schemas";
+    ErrorResponseSchema,
+} from "@/docs/openapi/schemas";
 
 registry.registerPath({
     method: "post",

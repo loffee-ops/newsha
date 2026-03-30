@@ -1,1 +1,1 @@
-export { generateOpenAPIDocument } from "./registry";
+export { registry, generateOpenAPIDocument } from "./registry";

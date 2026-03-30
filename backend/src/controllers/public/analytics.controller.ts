@@ -1,9 +1,10 @@
 import type { Request, Response } from "express";
 
+import { AnalyticsErrors } from "@/errors";
+
 import type { AnalyticsEvent } from "@shared/domain/analytics";
 
-import { AnalyticsErrors } from "@/errors";
-import { AnalyticsService } from "@/services/analytics.service";
+import { AnalyticsService } from "@/services";
 
 const service = new AnalyticsService();
 

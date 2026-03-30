@@ -6,7 +6,8 @@ import type { ID } from "@shared/primitives";
 import type { WishlistItem } from "@shared/domain/wishlist";
 
 import { AuthErrors, CommonErrors } from "@/errors";
-import { WishlistService } from "@/services/wishlist.service";
+
+import { WishlistService } from "@/services";
 
 const service = new WishlistService();
 

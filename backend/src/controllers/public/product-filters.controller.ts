@@ -2,7 +2,7 @@ import type { Request, Response } from "express";
 
 import type { ProductFiltersDTO } from "@shared/contracts/product";
 
-import { ProductModel } from "@/models/product.model";
+import { ProductModel } from "@/models";
 
 import { cacheGet, cacheSet } from "@/infrastructure/redis";
 

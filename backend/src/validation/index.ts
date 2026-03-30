@@ -1,5 +1,10 @@
 export { validateLogin, validateRegister } from "./auth.validation";
-export { validateUserId, validateUserRole } from "./user.validation";
+export {
+    validateUserId,
+    validateUserRole,
+    validateUpdateProfile,
+    validateChangePassword,
+} from "./user.validation";
 export { validateAddToCart, validateRemoveFromCart } from "./cart.validation";
 export {
     validateBannerId,

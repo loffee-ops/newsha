@@ -1,4 +1,5 @@
 import { z } from "@shared/contracts/common/zod-extend";
+
 import { ANALYTICS_EVENT_VALUES } from "@shared/domain/analytics";
 
 export const CheckoutItemSchema = z.object({

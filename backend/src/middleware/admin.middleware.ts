@@ -1,9 +1,10 @@
 import type { Request, Response, NextFunction } from "express";
 
+import { AuthErrors, CommonErrors } from "@/errors";
+
 import { USER_ROLES } from "@shared/domain/user";
 
-import { UserModel } from "@/models/user.model";
-import { AuthErrors, CommonErrors } from "@/errors";
+import { UserModel } from "@/models";
 
 export async function requireAdmin(req: Request, _res: Response, next: NextFunction) {
     try {

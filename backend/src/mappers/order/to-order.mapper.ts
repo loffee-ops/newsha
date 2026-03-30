@@ -8,7 +8,7 @@ import {
 } from "@shared/domain/order";
 import type { ProductVolume } from "@shared/domain/product";
 
-import type { OrderDB } from "@/models/order.model";
+import type { OrderDB } from "@/models";
 
 function toOrderItem(item: OrderDB["items"][number]): OrderItem {
     return {

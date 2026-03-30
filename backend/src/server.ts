@@ -3,74 +3,18 @@ import mongoose from "mongoose";
 import type { Server } from "http";
 
 import { app } from "./app";
+import { SERVER_LOG_MESSAGES } from "./server.constants";
+import { setupServerProcess } from "./server-process";
 
-import { redis } from "@/infrastructure/redis";
-import { logger } from "@/infrastructure/logger/logger";
+import { logger } from "@/infrastructure/logger";
 import cloudinary from "@/infrastructure/cloudinary/cloudinary.client";
+
 import { env } from "@/config";
 
 let server: Server | null = null;
-let isShuttingDown = false;
 
-const SHUTDOWN_TIMEOUT_MS = 10_000;
-
-async function shutdown(signal: string) {
-    if (isShuttingDown) {
-        return;
-    }
-
-    isShuttingDown = true;
-    logger.warn({ signal }, "Shutdown started");
-
-    const forceExitTimer = setTimeout(() => {
-        logger.fatal({ signal, timeoutMs: SHUTDOWN_TIMEOUT_MS }, "Forced shutdown by timeout");
-        process.exit(1);
-    }, SHUTDOWN_TIMEOUT_MS);
-
-    forceExitTimer.unref();
-
-    try {
-        const currentServer = server;
-
-        if (currentServer) {
-            await new Promise<void>((resolve, reject) => {
-                currentServer.close((err) => {
-                    if (err) {
-                        reject(err);
-                        return;
-                    }
-
-                    resolve();
-                });
-            });
-        }
-
-        await Promise.allSettled([mongoose.disconnect(), redis.quit()]);
-
-        logger.info("Shutdown completed");
-        process.exit(0);
-    } catch (error) {
-        logger.error({ err: error, signal }, "Shutdown error");
-        process.exit(1);
-    }
-}
-
-process.on("SIGINT", () => {
-    void shutdown("SIGINT");
-});
-
-process.on("SIGTERM", () => {
-    void shutdown("SIGTERM");
-});
-
-process.on("unhandledRejection", (reason) => {
-    logger.fatal({ err: reason }, "Unhandled promise rejection");
-    void shutdown("unhandledRejection");
-});
-
-process.on("uncaughtException", (error) => {
-    logger.fatal({ err: error }, "Uncaught exception");
-    void shutdown("uncaughtException");
+setupServerProcess({
+    getServer: () => server,
 });
 
 async function start() {
@@ -80,11 +24,11 @@ async function start() {
                 port: env.PORT,
                 mongoUriExists: Boolean(env.MONGO_URI),
             },
-            "Starting server",
+            SERVER_LOG_MESSAGES.startingServer,
         );
 
         await mongoose.connect(env.MONGO_URI);
-        logger.info("Mongo connected");
+        logger.info(SERVER_LOG_MESSAGES.mongoConnected);
 
         try {
             await cloudinary.api.ping();
@@ -92,24 +36,24 @@ async function start() {
                 {
                     cloudName: env.CLOUDINARY_CLOUD_NAME,
                 },
-                "Cloudinary available",
+                SERVER_LOG_MESSAGES.cloudinaryAvailable,
             );
         } catch (error) {
-            logger.warn({ err: error }, "Cloudinary unavailable");
+            logger.warn({ err: error }, SERVER_LOG_MESSAGES.cloudinaryUnavailable);
         }
 
         logger.info(
             {
                 googleClientIdExists: Boolean(env.GOOGLE_CLIENT_ID),
             },
-            "Google auth config loaded",
+            SERVER_LOG_MESSAGES.googleAuthConfigLoaded,
         );
 
         server = app.listen(env.PORT, () => {
-            logger.info({ port: env.PORT }, "Server started");
+            logger.info({ port: env.PORT }, SERVER_LOG_MESSAGES.serverStarted);
         });
     } catch (error) {
-        logger.error({ err: error }, "Server startup error");
+        logger.error({ err: error }, SERVER_LOG_MESSAGES.serverStartupError);
         process.exit(1);
     }
 }

@@ -6,11 +6,8 @@ import {
     updateBannerAdmin,
     deleteBannerAdmin,
 } from "@/services/admin.banner.service";
-import {
-    validateUploadBanner,
-    validateUpdateBanner,
-    validateBannerId,
-} from "@/validation/banner.validation";
+
+import { validateUploadBanner, validateUpdateBanner, validateBannerId } from "@/validation";
 
 export async function getAllBanners(req: Request, res: Response) {
     const result = await getAllBannersAdmin(req);

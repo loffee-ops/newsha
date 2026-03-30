@@ -1,5 +1,6 @@
-import { AppError } from "./app.error";
 import { COMMON_ERROR_CODES } from "@shared/errors";
+
+import { AppError } from "./app.error";
 
 export const CommonErrors = {
     badRequest: (message = "Bad request", data?: unknown) =>

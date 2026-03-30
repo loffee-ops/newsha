@@ -1,7 +1,8 @@
 import type { ErrorRequestHandler, Request } from "express";
 
 import { AppError } from "@/errors";
-import { logger } from "@/infrastructure/logger/logger";
+
+import { logger } from "@/infrastructure/logger";
 
 function shouldSkipAppErrorLog(err: AppError, req: Request): boolean {
     if (err.status !== 401) {

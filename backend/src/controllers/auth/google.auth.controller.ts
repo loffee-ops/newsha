@@ -2,8 +2,9 @@ import type { Request, Response } from "express";
 
 import { CommonErrors } from "@/errors";
 
-import { loginWithGoogle } from "@/services/google-auth.service";
-import { setAuthCookie } from "@/controllers/auth/auth.controller";
+import { loginWithGoogle } from "@/services";
+
+import { setAuthCookie } from "@/controllers/auth";
 
 function validateIdToken(value: unknown): string {
     if (typeof value !== "string" || value.trim().length === 0) {

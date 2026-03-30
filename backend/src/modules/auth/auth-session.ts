@@ -3,7 +3,7 @@ import crypto from "node:crypto";
 
 import type { UserRole } from "@shared/domain/user";
 
-import { SessionModel } from "@/models/session.model";
+import { SessionModel } from "@/models";
 
 import { issueAuthTokens } from "./auth.tokens";
 

@@ -1,10 +1,13 @@
 import { SYNC_ENTITIES, SYNC_SOURCES } from "@shared/domain/sync";
 
 import { logger } from "@/infrastructure/logger";
-import { CategoryModel } from "@/models/category.model";
-import { ProductModel } from "@/models/product.model";
+
+import { CategoryModel, ProductModel } from "@/models";
+
 import { indexProduct, removeProductFromIndex } from "@/modules/search";
-import { SyncStateService } from "@/services/sync-state.service";
+
+import { SyncStateService } from "@/services";
+
 import { OneCClient } from "@/integrations/onec/client";
 import { mapOneCProductToUpsertInput } from "@/integrations/onec/mappers";
 

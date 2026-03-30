@@ -1,12 +1,10 @@
 import type { Request, Response } from "express";
 
-import { ReviewService } from "@/services/review.service";
+import { ReviewService } from "@/services";
+
 import { toReview, toReviews } from "@/mappers/review";
-import {
-    validateCreateReview,
-    validateProductId,
-    validateReviewId,
-} from "@/validation/review.validation";
+
+import { validateCreateReview, validateProductId, validateReviewId } from "@/validation";
 
 const service = new ReviewService();
 

@@ -1,7 +1,10 @@
-import { registry } from "../registry";
+import { registry } from "@/docs/openapi";
 
-import { ErrorResponseSchema } from "../schemas/responses.schemas";
-import { SearchQuerySchema, SearchResponseSchema } from "../schemas/search.schemas";
+import {
+    SearchQuerySchema,
+    SearchResponseSchema,
+    ErrorResponseSchema,
+} from "@/docs/openapi/schemas";
 
 registry.registerPath({
     method: "get",

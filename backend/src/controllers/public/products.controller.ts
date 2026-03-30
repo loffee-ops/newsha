@@ -4,7 +4,7 @@ import type { ProductsQuery } from "@shared/contracts/product";
 
 import { CommonErrors } from "@/errors";
 
-import { ProductService } from "@/services/product.service";
+import { ProductService } from "@/services";
 
 const service = new ProductService();
 

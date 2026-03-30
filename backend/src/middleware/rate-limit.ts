@@ -1,61 +1,31 @@
-import rateLimit from "express-rate-limit";
+import { createAppRateLimit, RATE_LIMIT_MESSAGES } from "./config";
 
-export const globalRateLimit = rateLimit({
+export const globalRateLimit = createAppRateLimit({
     windowMs: 15 * 60 * 1000,
     max: 300,
-    standardHeaders: true,
-    legacyHeaders: false,
-    message: {
-        code: "RATE_LIMITED",
-        kind: "TOO_MANY_REQUESTS",
-        message: "Too many requests, please try again later",
-    },
+    message: RATE_LIMIT_MESSAGES.global,
 });
 
-export const authRateLimit = rateLimit({
+export const authRateLimit = createAppRateLimit({
     windowMs: 15 * 60 * 1000,
     max: 10,
-    standardHeaders: true,
-    legacyHeaders: false,
-    message: {
-        code: "RATE_LIMITED",
-        kind: "TOO_MANY_REQUESTS",
-        message: "Too many auth attempts, please try again later",
-    },
+    message: RATE_LIMIT_MESSAGES.auth,
 });
 
-export const refreshRateLimit = rateLimit({
+export const refreshRateLimit = createAppRateLimit({
     windowMs: 15 * 60 * 1000,
     max: 20,
-    standardHeaders: true,
-    legacyHeaders: false,
-    message: {
-        code: "RATE_LIMITED",
-        kind: "TOO_MANY_REQUESTS",
-        message: "Too many refresh attempts, please try again later",
-    },
+    message: RATE_LIMIT_MESSAGES.refresh,
 });
 
-export const publicFormRateLimit = rateLimit({
+export const publicFormRateLimit = createAppRateLimit({
     windowMs: 15 * 60 * 1000,
     max: 8,
-    standardHeaders: true,
-    legacyHeaders: false,
-    message: {
-        code: "RATE_LIMITED",
-        kind: "TOO_MANY_REQUESTS",
-        message: "Too many form submissions, please try again later",
-    },
+    message: RATE_LIMIT_MESSAGES.publicForm,
 });
 
-export const searchRateLimit = rateLimit({
+export const searchRateLimit = createAppRateLimit({
     windowMs: 1 * 60 * 1000,
     max: 30,
-    standardHeaders: true,
-    legacyHeaders: false,
-    message: {
-        code: "RATE_LIMITED",
-        kind: "TOO_MANY_REQUESTS",
-        message: "Too many search requests, please try again later",
-    },
+    message: RATE_LIMIT_MESSAGES.search,
 });

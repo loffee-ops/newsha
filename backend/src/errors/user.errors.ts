@@ -1,5 +1,6 @@
-import { AppError } from "./app.error";
 import { USER_ERROR_CODES } from "@shared/errors";
+
+import { AppError } from "./app.error";
 
 export const UserErrors = {
     notFound: () =>

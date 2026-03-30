@@ -1,7 +1,10 @@
-import { registry } from "../registry";
+import { registry } from "@/docs/openapi";
 
-import { WishlistMutationRequestSchema, WishlistResponseSchema } from "../schemas/wishlist.schemas";
-import { ErrorResponseSchema } from "../schemas/responses.schemas";
+import {
+    WishlistMutationRequestSchema,
+    WishlistResponseSchema,
+    ErrorResponseSchema,
+} from "@/docs/openapi/schemas";
 
 registry.registerPath({
     method: "get",

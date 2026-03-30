@@ -5,7 +5,8 @@ import { asID } from "@shared/primitives";
 import type { ID } from "@shared/primitives";
 
 import { CommonErrors, AuthErrors } from "@/errors";
-import { RecentlyViewedService } from "@/services/recently-viewed.service";
+
+import { RecentlyViewedService } from "@/services";
 
 const service = new RecentlyViewedService();
 

@@ -1,9 +1,11 @@
 import jwt from "jsonwebtoken";
 import type { Request, Response, NextFunction } from "express";
 
-import { AUTH_COOKIE_NAME, JWT_SECRET } from "@/config";
-import { AuthErrors } from "@/errors";
 import { USER_ROLES, type UserRole } from "@shared/domain/user";
+
+import { AuthErrors } from "@/errors";
+
+import { AUTH_COOKIE_NAME, JWT_SECRET } from "@/config";
 
 export type AuthTokenPayload = {
     userId: string;

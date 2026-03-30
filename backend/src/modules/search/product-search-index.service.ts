@@ -1,5 +1,5 @@
-import { ProductModel, type ProductDoc } from "@/models/product.model";
-import { ProductSearchModel } from "@/models/product-search.model";
+import { ProductModel, ProductSearchModel } from "@/models";
+import type { ProductDoc } from "@/models";
 
 function buildSearchText(product: ProductDoc): string {
     return [

@@ -1,8 +1,9 @@
 import type { Request, Response } from "express";
 
 import { AuthErrors } from "@/errors";
-import { userService } from "@/services/user.service";
-import { validateUpdateProfile, validateChangePassword } from "@/validation/user.validation";
+
+import { userService } from "@/services";
+import { validateUpdateProfile, validateChangePassword } from "@/validation";
 
 function requireUserId(req: Request): string {
     if (!req.userId) {

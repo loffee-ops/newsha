@@ -4,10 +4,11 @@ import { asID } from "@shared/primitives";
 
 import { ConsultationErrors } from "@/errors";
 
-import { ConsultationService } from "@/services/consultation.service";
 import { requireObjectId, requireTrimmedString, optionalTrimmedString } from "@/lib/validation";
 
-import { CONSULTATION_STATUS, type ConsultationStatus } from "@/models/consultation.model";
+import { ConsultationService } from "@/services";
+
+import { CONSULTATION_STATUS, type ConsultationStatus } from "@/models";
 
 const service = new ConsultationService();
 

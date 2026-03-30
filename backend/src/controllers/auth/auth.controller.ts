@@ -1,18 +1,21 @@
 import type { Request, Response } from "express";
 
 import { AUTH_COOKIE_NAME, IS_PRODUCTION } from "@/config";
+
 import { AuthErrors } from "@/errors";
 
 import { setRefreshCookie, clearRefreshCookie, REFRESH_COOKIE_NAME } from "@/modules/auth";
+
 import {
     login,
     register,
     refreshSession,
     logoutCurrentSession,
     logoutAllSessions,
-} from "@/services/auth.service";
-import { userService } from "@/services/user.service";
-import { validateRegister, validateLogin } from "@/validation/auth.validation";
+    userService,
+} from "@/services";
+
+import { validateRegister, validateLogin } from "@/validation";
 
 export function setAuthCookie(res: Response, token: string) {
     res.cookie(AUTH_COOKIE_NAME, token, {

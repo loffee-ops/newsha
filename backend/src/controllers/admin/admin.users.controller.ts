@@ -1,7 +1,8 @@
 import type { Request, Response } from "express";
 
-import { userService } from "@/services/user.service";
-import { validateUserId, validateUserRole } from "@/validation/user.validation";
+import { userService } from "@/services";
+
+import { validateUserId, validateUserRole } from "@/validation";
 
 export async function getAllUsers(req: Request, res: Response) {
     const result = await userService.getAdminList(req);

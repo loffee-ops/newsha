@@ -1,9 +1,12 @@
 import { z } from "@shared/contracts/common/zod-extend";
 
-import { registry } from "../registry";
+import { registry } from "@/docs/openapi";
 
-import { ErrorResponseSchema, OkResponseSchema } from "../schemas/responses.schemas";
-import { RecentlyViewedResponseSchema } from "../schemas/recently-viewed.schemas";
+import {
+    ErrorResponseSchema,
+    OkResponseSchema,
+    RecentlyViewedResponseSchema,
+} from "@/docs/openapi/schemas";
 
 registry.registerPath({
     method: "get",

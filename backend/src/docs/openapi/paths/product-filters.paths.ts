@@ -1,6 +1,6 @@
-import { registry } from "../registry";
+import { registry } from "@/docs/openapi";
 
-import { ProductFiltersSchema } from "../schemas/product.schemas";
+import { ProductFiltersSchema } from "@/docs/openapi/schemas";
 
 registry.registerPath({
     method: "get",

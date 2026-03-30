@@ -1,7 +1,7 @@
 import { asID } from "@shared/primitives";
 import type { User } from "@shared/domain/user";
 
-import type { UserDoc } from "@/models/user.model";
+import type { UserDoc } from "@/models";
 
 export function toUser(doc: UserDoc): User {
     return {

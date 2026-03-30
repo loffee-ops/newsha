@@ -1,11 +1,12 @@
-import { registry } from "../registry";
+import { registry } from "@/docs/openapi";
 
 import {
     CartResponseSchema,
     AddToCartRequestSchema,
     RemoveFromCartRequestSchema,
-} from "../schemas/cart.schemas";
-import { ErrorResponseSchema, OkResponseSchema } from "../schemas/responses.schemas";
+    ErrorResponseSchema,
+    OkResponseSchema,
+} from "@/docs/openapi/schemas";
 
 registry.registerPath({
     method: "get",

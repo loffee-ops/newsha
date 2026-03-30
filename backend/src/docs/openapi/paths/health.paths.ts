@@ -1,7 +1,6 @@
-import { registry } from "../registry";
+import { registry } from "@/docs/openapi";
 
-import { HealthResponseSchema } from "../schemas/health.schemas";
-import { ErrorResponseSchema } from "../schemas/responses.schemas";
+import { HealthResponseSchema, ErrorResponseSchema } from "@/docs/openapi/schemas";
 
 registry.registerPath({
     method: "get",

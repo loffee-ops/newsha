@@ -1,1 +1,1 @@
-export type { HealthOverallStatus, DbStatus, RedisStatus, HealthResponse } from "./health.dto";
+export type { HealthStatus, DbStatus, RedisStatus, HealthResponse } from "./health.dto";

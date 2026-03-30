@@ -1,4 +1,5 @@
 import { cyrToLat } from "@shared/lib/search";
+
 import type { OneCProductItem } from "@/integrations/onec/types";
 
 function slugify(value: string): string {

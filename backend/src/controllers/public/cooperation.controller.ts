@@ -3,9 +3,9 @@ import { isValidObjectId } from "mongoose";
 
 import { CommonErrors, CooperationErrors } from "@/errors";
 
-import { CooperationService } from "@/services/cooperation.service";
+import { CooperationService } from "@/services";
 
-import { COOPERATION_STATUSES, type CooperationStatus } from "@/models/cooperation.model";
+import { COOPERATION_STATUSES, type CooperationStatus } from "@/models";
 
 const service = new CooperationService();
 

@@ -1,14 +1,16 @@
 import { z } from "@shared/contracts/common/zod-extend";
 
-import { registry } from "../registry";
+import { registry } from "@/docs/openapi";
 
-import { ErrorResponseSchema, OkResponseSchema } from "../schemas/responses.schemas";
-import { AdminCategoryListResponseSchema, AdminCategorySchema } from "../schemas/admin.schemas";
 import {
+    ErrorResponseSchema,
+    OkResponseSchema,
     CreateCategoryRequestSchema,
     UpdateCategoryRequestSchema,
     SetCategoryActiveRequestSchema,
-} from "../schemas/category.schemas";
+    AdminCategoryListResponseSchema,
+    AdminCategorySchema,
+} from "@/docs/openapi/schemas";
 
 registry.registerPath({
     method: "get",

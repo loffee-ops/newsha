@@ -1,11 +1,8 @@
 import type { Request, Response } from "express";
 
-import { OrderService } from "@/services/order.service";
-import {
-    validateAdminOrderFilters,
-    validateOrderId,
-    validateSetOrderStatus,
-} from "@/validation/order.validation";
+import { OrderService } from "@/services";
+
+import { validateAdminOrderFilters, validateOrderId, validateSetOrderStatus } from "@/validation";
 
 const service = new OrderService();
 

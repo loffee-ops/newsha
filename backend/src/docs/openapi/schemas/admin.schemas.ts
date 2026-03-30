@@ -1,8 +1,8 @@
 import { z } from "@shared/contracts/common/zod-extend";
 
-import { ProductDTOSchema } from "./product.schemas";
 import { BANNER_PLACEMENTS, BANNER_VARIANTS } from "@shared/domain/banner";
 
+import { ProductDTOSchema } from "./product.schemas";
 import { OrderSchema } from "./order.schemas";
 import { ReviewSchema } from "./review.schemas";
 

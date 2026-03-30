@@ -3,8 +3,10 @@ import type { Request, Response } from "express";
 import { asID } from "@shared/primitives";
 
 import { AuthErrors } from "@/errors";
-import { validateAddToCart, validateRemoveFromCart } from "@/validation/cart.validation";
-import { CartService } from "@/services/cart.service";
+
+import { CartService } from "@/services";
+
+import { validateAddToCart, validateRemoveFromCart } from "@/validation";
 
 const cartService = new CartService();
 

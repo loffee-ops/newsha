@@ -1,6 +1,6 @@
-import type { CooperationDTO } from "@shared/contracts/cooperation/cooperation.dto";
+import type { CooperationDTO } from "@shared/contracts/cooperation";
 
-import type { CooperationDoc } from "@/models/cooperation.model";
+import type { CooperationDoc } from "@/models";
 
 export function toCooperationDTO(doc: CooperationDoc): CooperationDTO {
     return {

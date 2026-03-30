@@ -1,5 +1,6 @@
-import { emailRegex, phoneRegex, nameRegex } from "./regex";
 import { PASSWORD_ERROR_CODES, type PasswordErrorCode } from "@shared/errors";
+
+import { emailRegex, phoneRegex, nameRegex } from "./regex";
 
 export function isValidEmail(value: string): boolean {
     return emailRegex.test(value.trim());

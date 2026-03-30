@@ -1,7 +1,7 @@
 import { asID, asISODate } from "@shared/primitives";
 import type { Review, ReviewRating } from "@shared/domain/review";
 
-import type { ReviewDoc } from "@/models/review.model";
+import type { ReviewDoc } from "@/models";
 
 export function toReview(doc: ReviewDoc): Review {
     return {

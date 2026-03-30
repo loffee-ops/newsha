@@ -1,8 +1,11 @@
 import { SYNC_ENTITIES, SYNC_SOURCES } from "@shared/domain/sync";
 
 import { logger } from "@/infrastructure/logger";
-import { CategoryModel } from "@/models/category.model";
-import { SyncStateService } from "@/services/sync-state.service";
+
+import { CategoryModel } from "@/models";
+
+import { SyncStateService } from "@/services";
+
 import { OneCClient } from "@/integrations/onec/client";
 import { mapOneCCategoryToUpsertInput } from "@/integrations/onec/mappers";
 

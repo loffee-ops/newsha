@@ -2,7 +2,7 @@ import { asID, asMoney, asSlug } from "@shared/primitives";
 import type { ProductDTO } from "@shared/contracts/product";
 import type { ProductGallery, ProductVolumeVariant } from "@shared/domain/product";
 
-import type { ProductDoc } from "@/models/product.model";
+import type { ProductDoc } from "@/models";
 
 function toMoney(value: number | null | undefined) {
     return value != null ? asMoney(value) : undefined;

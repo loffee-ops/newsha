@@ -3,7 +3,7 @@ import { isValidObjectId } from "mongoose";
 
 import { CommonErrors } from "@/errors";
 
-import { ProductService } from "@/services/product.service";
+import { ProductService } from "@/services";
 
 const service = new ProductService();
 

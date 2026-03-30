@@ -2,7 +2,7 @@ import type { Request, Response } from "express";
 
 import { CommonErrors } from "@/errors";
 
-import { SearchService } from "@/services/search.service";
+import { SearchService } from "@/services";
 
 const service = new SearchService();
 

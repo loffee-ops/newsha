@@ -1,4 +1,5 @@
-import { logger } from "@/infrastructure/logger/logger";
+import { logger } from "@/infrastructure/logger";
+
 import { redis } from "./redis.client";
 
 export async function cacheGet<T>(key: string): Promise<T | null> {

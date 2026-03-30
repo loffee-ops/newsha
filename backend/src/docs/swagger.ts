@@ -3,7 +3,7 @@ import swaggerUi from "swagger-ui-express";
 
 import { logger } from "@/infrastructure/logger/logger";
 
-import { generateOpenAPIDocument } from "./openapi/registry";
+import { generateOpenAPIDocument } from "@/docs/openapi";
 
 export function initSwagger(app: Express) {
     const isProduction = process.env.NODE_ENV === "production";

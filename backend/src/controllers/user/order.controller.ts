@@ -4,8 +4,10 @@ import { asID } from "@shared/primitives";
 import type { ID } from "@shared/primitives";
 
 import { AuthErrors } from "@/errors";
-import { OrderService } from "@/services/order.service";
-import { validateCheckout } from "@/validation/order.validation";
+
+import { OrderService } from "@/services";
+
+import { validateCheckout } from "@/validation";
 
 const service = new OrderService();
 

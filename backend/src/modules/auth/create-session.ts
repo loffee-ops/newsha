@@ -1,4 +1,4 @@
-import { SessionModel } from "@/models/session.model";
+import { SessionModel } from "@/models";
 
 const REFRESH_SESSION_TTL_MS = 1000 * 60 * 60 * 24 * 30;
 

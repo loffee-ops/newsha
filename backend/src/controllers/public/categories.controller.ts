@@ -1,8 +1,10 @@
 import type { Request, Response } from "express";
 
 import { CommonErrors } from "@/errors";
+
 import { toCategoryDTO, toCategoryEntity } from "@/mappers/category";
-import { categoryService } from "@/services/categories.service";
+
+import { categoryService } from "@/services";
 
 type CategorySlugParams = {
     slug: string;

@@ -1,3 +1,4 @@
+export { googleLoginHandler } from "./google.auth.controller";
 export {
     setAuthCookie,
     registerHandler,
@@ -8,4 +9,3 @@ export {
     sessionsHandler,
     revokeSessionHandler,
 } from "./auth.controller";
-export { googleLoginHandler } from "./google.auth.controller";
