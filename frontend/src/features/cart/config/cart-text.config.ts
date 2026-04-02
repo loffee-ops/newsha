@@ -22,3 +22,5 @@ export const CART_FOOTER_TEXT = {
 export const CART_EMPTY_TEXT = {
     MESSAGE: "Ваш кошик порожній.",
 } as const;
+
+export const CART_BUTTON_ARIA_LABEL = "Відкрити кошик";

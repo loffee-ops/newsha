@@ -1,4 +1,4 @@
-import { fonts, colors } from "./variables/assets";
+import { fonts, colors, zIndex } from "./variables/assets";
 import { breakpoints, media, containers } from "./variables/layout";
 import { fontSizes, fontWeights, lineHeights, fontMetrics } from "./variables/typography";
 import {
@@ -15,8 +15,15 @@ import {
 
 import logoWhite from "../assets/logo/logo_newsha_white.svg";
 import logoBlack from "../assets/logo/logo_newsha.svg";
-import userIcon from "../assets/userUI/user.svg";
-import shoppingBag from "../assets/userUI/bag.svg";
+import userIcon from "../assets/userUI/profile.svg";
+import shoppingBag from "../assets/userUI/buy.svg";
+import heartIcon from "../assets/userUI/heart.svg";
+import homeIcon from "../assets/userUI/home.svg";
+import messageIcon from "../assets/userUI/message.svg";
+import notificationIcon from "../assets/userUI/notification.svg";
+import searchIcon from "../assets/userUI/search.svg";
+import glassIcon from "../assets/utils/close-glass.svg";
+import moreIcon from "../assets/utils/more-circle.svg";
 
 export const mainTheme = {
     fontSizes,
@@ -27,6 +34,7 @@ export const mainTheme = {
     fonts,
     media,
     colors,
+    zIndex,
     fontMetrics,
     flex,
     flexCenter,
@@ -45,6 +53,13 @@ export const mainTheme = {
         },
         userIcon,
         shoppingBag,
+        heartIcon,
+        homeIcon,
+        messageIcon,
+        notificationIcon,
+        searchIcon,
+        glassIcon,
+        moreIcon,
     },
 };
 

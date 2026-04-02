@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import { MobileActionDock } from "@/widgets/MobileActionDock";
 
 import { useBreadcrumbs } from "@/app/navigation/hooks";
 import { JsonLd } from "@/app/seo/ui";
@@ -23,6 +24,11 @@ export function AppLayout() {
                     <Breadcrumbs breadcrumbs={breadcrumbs} />
                     <Outlet />
                 </PageContainer>
+                <MobileActionDock
+                    onMenuClick={() => console.log("menu")}
+                    onUserClick={() => console.log("user")}
+                    onWishlistClick={() => console.log("wishlist")}
+                />
             </Content>
         </LayoutWrapper>
     );

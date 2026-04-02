@@ -4,4 +4,5 @@ export {
     REGISTER_VALIDATION_TEXT,
     LOGIN_FORM_TEXT,
     LOGIN_VALIDATION_TEXT,
+    AUTH_BUTTON_ARIA_LABELS,
 } from "./auth.config";

@@ -47,3 +47,8 @@ export const REGISTER_VALIDATION_TEXT = {
     PASSWORDS_NOT_MATCH: "Паролі не співпадають",
     CONFIRM_REQUIRED: "Підтвердіть пароль",
 } as const;
+
+export const AUTH_BUTTON_ARIA_LABELS = {
+    guest: "Відкрити вхід",
+    user: "Відкрити профіль",
+} as const;

@@ -26,7 +26,8 @@ import { consultationReducer } from "@/features/consultation/model";
 import { consultationUIReducer } from "@/features/consultation/model";
 import { cooperationReducer } from "@/features/cooperation/model";
 import { reviewReducer } from "@/features/review/model";
-import { searchReducer } from "@/features/search";
+import { searchReducer } from "@/features/search/model";
+import { searchUIReducer } from "@/features/search/model";
 
 export const rootReducer = combineReducers({
     app: appReducer,
@@ -58,4 +59,5 @@ export const rootReducer = combineReducers({
     consultationUI: consultationUIReducer,
     cooperation: cooperationReducer,
     search: searchReducer,
+    searchUI: searchUIReducer,
 });

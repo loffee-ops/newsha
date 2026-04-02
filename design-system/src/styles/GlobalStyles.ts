@@ -29,7 +29,7 @@ export const GlobalStyles = createGlobalStyle`
     font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont,
       "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
       "Helvetica Neue", sans-serif;
-    background: #f5f6f8;
+    background: #ffffff;
     position: relative;
   }
 

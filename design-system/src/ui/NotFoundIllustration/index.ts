@@ -1,1 +1,0 @@
-export { NotFoundIllustration } from "./NotFoundIllustration";
