@@ -18,6 +18,8 @@ export interface CategoryNode extends Category {
     children: readonly CategoryNode[];
 }
 
+export type CategoryRootSlug = "catalog" | "desired-effect" | "hair-type-condition" | (string & {});
+
 export type CatalogCategorySlug =
     | "shampoo-cleansing"
     | "conditioners"
@@ -25,12 +27,30 @@ export type CatalogCategorySlug =
     | "leave-in-care"
     | "oils"
     | "heat-protection"
-    | "medical-line"
+    | "scalp-care"
+    | "anti-dandruff"
     | "styling"
     | "color-masks"
     | "travel-size"
     | "body-care"
+    | "hair-perfumes"
     | "for-men"
-    | "tools-accessories"
-    | "gifts"
+    | "brushes-accessories"
+    | "packaging"
+    | (string & {});
+
+export type DesiredEffectSlug =
+    | "hydration"
+    | "smoothness"
+    | "restoration"
+    | "volume"
+    | "blonde"
+    | (string & {});
+
+export type HairTypeConditionSlug =
+    | "dry-hair"
+    | "normal-hair"
+    | "oily-hair"
+    | "porous-hair"
+    | "fine-hair"
     | (string & {});

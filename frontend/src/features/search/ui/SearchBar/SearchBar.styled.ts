@@ -37,7 +37,6 @@ export const SearchBarIcon = styled.img`
     height: 18px;
     object-fit: contain;
     pointer-events: none;
-    opacity: 0.7;
 `;
 
 export const SearchBarInput = styled.input`

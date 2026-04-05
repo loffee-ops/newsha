@@ -9,14 +9,10 @@ export const GlassIconButtonRoot = styled.button<{ $size: number }>`
     width: ${({ $size }) => `${$size}px`};
     height: ${({ $size }) => `${$size}px`};
     padding: 0;
-    border: 1px solid rgba(255, 255, 255, 0.22);
+    border: none;
     border-radius: 50%;
 
-    background: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.42) 0%,
-        rgba(255, 255, 255, 0.18) 100%
-    );
+    background: white;
 
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
