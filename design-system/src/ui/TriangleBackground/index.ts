@@ -1,0 +1,1 @@
+export { BeautyBackground } from "./TriangleBackground";

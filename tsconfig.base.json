@@ -3,10 +3,9 @@
         "target": "ES2022",
         "strict": true,
         "skipLibCheck": true,
-        "baseUrl": ".",
         "paths": {
-            "@shared": ["shared/src"],
-            "@shared/*": ["shared/src/*"]
+            "@shared": ["./shared/src"],
+            "@shared/*": ["./shared/src/*"]
         }
     }
 }

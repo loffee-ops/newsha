@@ -1,0 +1,1 @@
+export { HeaderPromo } from "./HeaderPromo";

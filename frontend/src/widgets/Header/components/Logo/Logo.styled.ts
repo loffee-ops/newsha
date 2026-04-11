@@ -1,34 +1,16 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
-export const LogoLink = styled(Link)`
+export const StyledLogo = styled.a`
     display: inline-flex;
     align-items: center;
-    text-decoration: none;
-    line-height: 1;
-`;
-
-export const LogoTextGroup = styled.span`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    gap: 4px;
-    transform: translateY(5px);
+    text-decoration: none;
 `;
 
-export const LogoImage = styled.img`
+export const LogoImage = styled.img.attrs(({ theme }) => ({
+    src: theme.assets.logo.blackLogo,
+}))`
     display: block;
-    width: auto;
-    height: 18px;
+    height: 22px;
     object-fit: cover;
-`;
-
-export const LogoSubtitle = styled.span`
-    display: block;
-    font-size: 9px;
-    line-height: 1;
-    letter-spacing: 0.31em;
-    text-transform: uppercase;
-    color: #111111;
 `;

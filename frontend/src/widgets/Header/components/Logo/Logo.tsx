@@ -1,20 +1,14 @@
-import { useTheme } from "styled-components";
+import React from "react";
+import { StyledLogo, LogoImage } from "./Logo.styled";
 
-import type { AppTheme } from "@design-system/theme";
+import type { LogoProps } from "./logo.types";
 
-import { ROUTES } from "@/app/navigation/config";
-
-import { LogoImage, LogoLink, LogoSubtitle, LogoTextGroup } from "./Logo.styled";
-
-export function Logo() {
-    const theme = useTheme() as AppTheme;
-
+export const Logo: React.FC<LogoProps> = ({ className, alt = "Newsha logo", href = "/" }) => {
     return (
-        <LogoLink to={ROUTES.HOME} aria-label="Перейти на главную страницу">
-            <LogoTextGroup>
-                <LogoImage src={theme.assets.logo.blackLogo} alt="Newsha" width={140} height={32} />
-                <LogoSubtitle>professional hair</LogoSubtitle>
-            </LogoTextGroup>
-        </LogoLink>
+        <StyledLogo className={className} href={href}>
+            <LogoImage alt={alt} />
+        </StyledLogo>
     );
-}
+};
+
+export default Logo;

@@ -8,7 +8,10 @@ export type CategoryPersistence = {
     slug: string;
     image?: string | null;
     description?: string | null;
+    parentId?: Types.ObjectId | null;
     isActive: boolean;
+    order: number;
+    showOnHome?: boolean;
     createdAt?: Date;
     updatedAt?: Date;
 };

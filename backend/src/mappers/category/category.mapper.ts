@@ -13,10 +13,10 @@ export function toCategoryEntity(doc: CategoryPersistence): Category {
         slug: asSlug(doc.slug),
         image: doc.image ?? undefined,
         description: doc.description ?? undefined,
-        parentId: null,
+        parentId: doc.parentId ? asID(doc.parentId.toString()) : null,
         isActive: doc.isActive,
-        order: 0,
-        showOnHome: undefined,
+        order: doc.order,
+        showOnHome: doc.showOnHome,
     };
 }
 
@@ -29,6 +29,9 @@ export function toCategoryDTO(entity: Category): CategoryDTO {
         slug: entity.slug,
         image: entity.image,
         description: entity.description,
+        parentId: entity.parentId,
         isActive: entity.isActive,
+        order: entity.order,
+        showOnHome: entity.showOnHome,
     };
 }

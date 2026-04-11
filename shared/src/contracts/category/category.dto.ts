@@ -6,7 +6,10 @@ export type CategoryDTO = {
     nameEn: string;
     nameUa: string;
     slug: Slug;
-    image?: string;
-    description?: string;
+    image?: string | null;
+    description?: string | null;
+    parentId: ID | null;
     isActive: boolean;
+    order: number;
+    showOnHome?: boolean;
 };

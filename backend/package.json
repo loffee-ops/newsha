@@ -15,7 +15,7 @@
         "seed:dev": "tsx -r tsconfig-paths/register src/scripts/db/seed.ts",
         "seed:fresh": "npm run db:reset && npm run seed",
         "seed:admin": "tsx -r tsconfig-paths/register src/scripts/db/seed-admin-run.ts",
-        "seed:categories": "tsx -r tsconfig-paths/register src/scripts/db/seed-categories-run.ts",
+        "seed:categories": "tsx -r tsconfig-paths/register src/seed/seed-categories.ts",
         "seed:products": "tsx -r tsconfig-paths/register src/scripts/db/seed-products-run.ts",
         "seed:banners": "tsx -r tsconfig-paths/register src/scripts/db/seed-banners-run.ts",
         "seed:reviews": "tsx -r tsconfig-paths/register src/scripts/db/seed-reviews-run.ts",

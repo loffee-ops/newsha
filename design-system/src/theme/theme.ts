@@ -16,7 +16,7 @@ import {
 import logoWhite from "../assets/logo/logo_newsha_white.svg";
 import logoBlack from "../assets/logo/logo_newsha.svg";
 import userIcon from "../assets/userUI/profile.svg";
-import shoppingBag from "../assets/userUI/buy.svg";
+import shoppingBag from "../assets/userUI/cart.svg";
 import heartIcon from "../assets/userUI/heart.svg";
 import homeIcon from "../assets/userUI/home.svg";
 import messageIcon from "../assets/userUI/message.svg";
@@ -24,6 +24,7 @@ import notificationIcon from "../assets/userUI/notification.svg";
 import searchIcon from "../assets/userUI/search.svg";
 import glassIcon from "../assets/utils/close-glass.svg";
 import moreIcon from "../assets/utils/more-circle.svg";
+import discoverIcon from "../assets/userUI/discover.svg?react";
 
 export const mainTheme = {
     fontSizes,
@@ -60,6 +61,7 @@ export const mainTheme = {
         searchIcon,
         glassIcon,
         moreIcon,
+        discoverIcon,
     },
 };
 

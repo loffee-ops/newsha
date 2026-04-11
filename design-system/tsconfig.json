@@ -24,10 +24,10 @@
         "forceConsistentCasingInFileNames": true,
         "exactOptionalPropertyTypes": true,
         "noImplicitOverride": true,
-        "baseUrl": ".",
+
         "paths": {
-            "@ds": ["src"],
-            "@ds/*": ["src/*"],
+            "@ds": ["./src"],
+            "@ds/*": ["./src/*"],
             "@shared": ["../shared/src"],
             "@shared/*": ["../shared/src/*"]
         }

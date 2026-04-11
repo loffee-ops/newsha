@@ -1,7 +1,7 @@
-import type { Category } from "@shared/domain/category";
+import type { CategoryDTO } from "@shared/contracts/category";
 import { DESIRED_EFFECT_ROOT_SLUG } from "@shared/domain/category";
 
-export function buildConditionMenu(categories: readonly Category[]) {
+export function buildConditionMenu(categories: readonly CategoryDTO[]) {
     const root = categories.find((c) => c.slug === DESIRED_EFFECT_ROOT_SLUG);
     if (!root) return [];
 

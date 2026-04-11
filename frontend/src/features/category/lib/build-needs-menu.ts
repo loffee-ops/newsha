@@ -1,7 +1,7 @@
-import type { Category } from "@shared/domain/category";
+import type { CategoryDTO } from "@shared/contracts/category";
 import { HAIR_TYPE_CONDITION_ROOT_SLUG } from "@shared/domain/category";
 
-export function buildNeedsMenu(categories: readonly Category[]) {
+export function buildNeedsMenu(categories: readonly CategoryDTO[]) {
     const root = categories.find((c) => c.slug === HAIR_TYPE_CONDITION_ROOT_SLUG);
     if (!root) return [];
 
